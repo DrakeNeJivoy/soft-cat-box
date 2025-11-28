@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3abulrknt06c"]
+
+[ext_resource type="Script" uid="uid://ddbdvvx7lrst" path="res://scripts/take_damage.gd" id="1_5nwrq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2r5dp"]
+
+[node name="TakeDamage" type="Area2D"]
+script = ExtResource("1_5nwrq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2r5dp")

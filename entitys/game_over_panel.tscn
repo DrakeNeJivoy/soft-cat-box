@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdhxnkh6cw7ic"]
+
+[ext_resource type="Script" uid="uid://dyt1fqx5eb18r" path="res://scripts/game_over_panel.gd" id="1_gcd8b"]
+[ext_resource type="FontFile" uid="uid://dvxjslssgsgw1" path="res://sprites/Fonts/PixelOperator8-Bold.ttf" id="2_2fpug"]
+[ext_resource type="FontFile" uid="uid://r1iqx70molqn" path="res://sprites/Fonts/minecraft_0.ttf" id="3_3fw7v"]
+
+[node name="GameOverPanel" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_gcd8b")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 237.0
+offset_top = 128.0
+offset_right = 935.7882
+offset_bottom = 523.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 96.0
+offset_right = 641.0
+offset_bottom = 218.0
+theme_override_colors/font_color = Color(10.863254, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(9.261236, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("2_2fpug")
+theme_override_font_sizes/font_size = 64
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 245.0
+offset_top = 259.0
+offset_right = 469.5161
+offset_bottom = 346.0
+theme_override_colors/font_color = Color(0.46814942, 1, 0.68564296, 1)
+theme_override_colors/font_hover_color = Color(0, 0.8548469, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_3fw7v")
+theme_override_font_sizes/font_size = 32
+text = "RE:START"
+
+[connection signal="pressed" from="Panel/RestartButton" to="." method="_on_restart_button_pressed"]

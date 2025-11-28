@@ -5,9 +5,33 @@ extends CharacterBody2D
 @export var speed := 700.0
 var dialog_active := false
 
+@export var max_health: int = 100
+var current_health: int
+
 func _ready() -> void:
 	GlobalSignal.dialog_started.connect(_on_dialog_started)
 	GlobalSignal.dialog_end.connect(_on_dialog_end)
+	current_health = max_health
+	# Подписка на глобальный сигнал
+	GlobalSignal.take_dmg.connect(Callable(self, "_on_take_damage"))
+	
+func _on_take_damage(amount: int) -> void:
+	current_health -= amount
+	print("MainChar получил ", amount, " урона. Здоровье: ", current_health)
+
+	if current_health <= 0:
+		var scene = get_tree().get_current_scene()
+		var panel_path = "MainChar/Camera2D/GameOverPanel"
+
+		if scene.has_node(panel_path):
+			var game_over_panel = scene.get_node(panel_path)
+			game_over_panel.show_game_over()
+		else:
+			push_error("GameOverPanel не найден по пути: " + panel_path)
+
+func die() -> void:
+	print("MainChar погиб!")
+	queue_free()
 
 func _physics_process(delta):
 	if dialog_active:
