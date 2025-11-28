@@ -1,15 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://q7pehfvsq4w4"]
+[gd_scene load_steps=2 format=3 uid="uid://q7pehfvsq4w4"]
 
-[ext_resource type="Texture2D" uid="uid://cxnai3f0wxvp" path="res://sprites/RAW_DIALOG.png" id="1_d0bf5"]
-[ext_resource type="Script" uid="uid://b0bkibg043e3s" path="res://texture_rect.gd" id="2_rr23b"]
+[ext_resource type="PackedScene" uid="uid://b10h3gtc27kkn" path="res://ui/dialog_window.tscn" id="1_d0bf5"]
 
 [node name="Camera2D" type="Camera2D"]
 zoom = Vector2(4, 4)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Dialog" parent="." instance=ExtResource("1_d0bf5")]
 visible = false
-offset_left = -111.0
-offset_top = -64.0
-offset_right = 113.0
-texture = ExtResource("1_d0bf5")
-script = ExtResource("2_rr23b")
+offset_left = -232.0
+offset_top = -118.0
+offset_right = 172.0
+offset_bottom = 104.0

@@ -3,8 +3,17 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var speed := 700.0
+var dialog_active := false
+
+func _ready() -> void:
+	GlobalSignal.dialog_started.connect(_on_dialog_started)
+	GlobalSignal.dialog_end.connect(_on_dialog_end)
 
 func _physics_process(delta):
+	if dialog_active:
+		# Игрок заморожен, выходим из обработки ввода
+		velocity = Vector2.ZERO
+		return
 	var input_vector = Vector2.ZERO
 
 	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -24,3 +33,8 @@ func _physics_process(delta):
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 		
+func _on_dialog_started():
+	dialog_active = true
+	
+func _on_dialog_end():
+	dialog_active = false

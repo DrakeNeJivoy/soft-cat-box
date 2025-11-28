@@ -1,6 +1,8 @@
 extends Node
 
 signal open_dialog(text)
+signal dialog_started
+signal dialog_end
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

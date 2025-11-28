@@ -8,7 +8,19 @@ var dialog_text = [
 	{
 		"name": "Drake",
 		"text": "Привет!"
-	}
+	},
+	{
+		"name": "Drake",
+		"text": "Hello!"
+	},
+	{
+		"name": "Drake",
+		"text": "Привет!"
+	},
+	{
+		"name": "NeDrake",
+		"text": "Hello!"
+	},
 ]
 
 # Called when the node enters the scene tree for the first time.

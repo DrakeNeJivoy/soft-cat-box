@@ -2,49 +2,52 @@
 
 [ext_resource type="Texture2D" uid="uid://cxnai3f0wxvp" path="res://sprites/RAW_DIALOG.png" id="1_0n77a"]
 [ext_resource type="Script" uid="uid://b0bkibg043e3s" path="res://texture_rect.gd" id="2_monqi"]
+[ext_resource type="FontFile" uid="uid://r1iqx70molqn" path="res://sprites/Fonts/minecraft_0.ttf" id="3_monqi"]
 
-[sub_resource type="FontFile" id="FontFile_0n77a"]
-cache/0/6/0/ascent = 0.0
-cache/0/6/0/descent = 0.0
-cache/0/6/0/underline_position = 0.0
-cache/0/6/0/underline_thickness = 0.0
-cache/0/6/0/scale = 1.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_monqi"]
-font = SubResource("FontFile_0n77a")
-font_size = 6
+[sub_resource type="LabelSettings" id="LabelSettings_ej70u"]
+font = ExtResource("3_monqi")
+font_size = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_8jitt"]
-font_size = 10
+font = ExtResource("3_monqi")
+font_size = 8
+outline_color = Color(0.30769438, 0.30769438, 0.30769438, 1)
 
-[node name="TextureRect" type="TextureRect"]
-offset_left = -111.0
-offset_top = -64.0
-offset_right = 113.0
-texture = ExtResource("1_0n77a")
+[node name="DialogWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -233.0
+offset_top = -85.0
+offset_right = 171.0
+offset_bottom = 137.0
 script = ExtResource("2_monqi")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 53.0
+offset_right = 338.0
+offset_bottom = 117.0
+texture = ExtResource("1_0n77a")
 
 [node name="Text" type="Label" parent="."]
 layout_mode = 0
-offset_left = 65.0
-offset_top = 17.0
-offset_right = 221.0
-offset_bottom = 46.0
+offset_left = 180.0
+offset_top = 71.0
+offset_right = 398.5714
+offset_bottom = 109.571434
+scale = Vector2(0.7, 0.7)
 text = "Hello!"
-label_settings = SubResource("LabelSettings_monqi")
+label_settings = SubResource("LabelSettings_ej70u")
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 0
-offset_left = 65.0
-offset_top = 1.0
-offset_right = 178.0
-offset_bottom = 15.0
+offset_left = 180.0
+offset_top = 57.0
+offset_right = 293.0
+offset_bottom = 70.0
 text = "Drake"
 label_settings = SubResource("LabelSettings_8jitt")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="gui_input" from="TextureRect" to="TextureRect" method="_on_gui_input"]
