@@ -14,3 +14,7 @@ config/name="SoftCatBox"
 run/main_scene="uid://cjfbxga87a0ks"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
