@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjfbxga87a0ks"]
+[gd_scene load_steps=8 format=3 uid="uid://cjfbxga87a0ks"]
 
 [ext_resource type="Texture2D" uid="uid://dqhwf6g4fj5vk" path="res://sprites/preview.jpg" id="1_m8ro5"]
 [ext_resource type="Shader" uid="uid://chl4prgm45iw1" path="res://shaders/mainscene.gdshader" id="1_pfvb4"]
 [ext_resource type="PackedScene" uid="uid://dnyrkg7g8lswe" path="res://scripts/main_char.tscn" id="2_sr2jn"]
 [ext_resource type="Script" uid="uid://ds7whuoat7bq8" path="res://scripts/floor.gd" id="3_mkths"]
+[ext_resource type="PackedScene" uid="uid://ckm7ixosi11en" path="res://npc/dialoger.tscn" id="5_mkths"]
 
 [sub_resource type="GDScript" id="GDScript_cqxiv"]
 script/source = "extends StaticBody2D
@@ -40,3 +41,7 @@ scale = Vector2(3.8636253, 3.8636253)
 [node name="Camera2D" type="Camera2D" parent="MainChar"]
 position = Vector2(0.33786717, -13.852554)
 scale = Vector2(1.400196, 1.400196)
+
+[node name="Dialoger" parent="." instance=ExtResource("5_mkths")]
+position = Vector2(342, -66)
+scale = Vector2(3.864, 3.864)
