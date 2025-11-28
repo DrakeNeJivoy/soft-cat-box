@@ -1,3 +1,42 @@
-[gd_scene format=3 uid="uid://cjfbxga87a0ks"]
+[gd_scene load_steps=7 format=3 uid="uid://cjfbxga87a0ks"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://dqhwf6g4fj5vk" path="res://sprites/preview.jpg" id="1_m8ro5"]
+[ext_resource type="Shader" uid="uid://chl4prgm45iw1" path="res://shaders/mainscene.gdshader" id="1_pfvb4"]
+[ext_resource type="PackedScene" uid="uid://dnyrkg7g8lswe" path="res://scripts/main_char.tscn" id="2_sr2jn"]
+[ext_resource type="Script" uid="uid://ds7whuoat7bq8" path="res://scripts/floor.gd" id="3_mkths"]
+
+[sub_resource type="GDScript" id="GDScript_cqxiv"]
+script/source = "extends StaticBody2D
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p1p0v"]
+shader = ExtResource("1_pfvb4")
+shader_parameter/map_width = 250.0
+shader_parameter/map_height = 250.0
+shader_parameter/tilt_amount = 0.3
+
+[node name="First Level" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(0, -2)
+script = SubResource("GDScript_cqxiv")
+
+[node name="Floor" type="Sprite2D" parent="StaticBody2D"]
+light_mask = 2
+visibility_layer = 2
+material = SubResource("ShaderMaterial_p1p0v")
+position = Vector2(1015.5005, 106.50007)
+scale = Vector2(11.306588, 6.703452)
+skew = 1.3316863
+texture = ExtResource("1_m8ro5")
+script = ExtResource("3_mkths")
+
+[node name="MainChar" parent="." instance=ExtResource("2_sr2jn")]
+position = Vector2(-2, -2)
+scale = Vector2(3.8636253, 3.8636253)
+
+[node name="Camera2D" type="Camera2D" parent="MainChar"]
+position = Vector2(0.33786717, -13.852554)
+scale = Vector2(1.400196, 1.400196)
