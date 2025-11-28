@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://du5se7nhs0d56"]
+
+[node name="Camera2D2" type="Camera2D"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 139.0
+offset_bottom = 115.0
