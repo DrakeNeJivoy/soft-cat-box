@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjfbxga87a0ks"]
+[gd_scene load_steps=9 format=3 uid="uid://cjfbxga87a0ks"]
 
 [ext_resource type="Texture2D" uid="uid://dqhwf6g4fj5vk" path="res://sprites/preview.jpg" id="1_m8ro5"]
 [ext_resource type="Shader" uid="uid://chl4prgm45iw1" path="res://shaders/mainscene.gdshader" id="1_pfvb4"]
 [ext_resource type="PackedScene" uid="uid://dnyrkg7g8lswe" path="res://scripts/main_char.tscn" id="2_sr2jn"]
 [ext_resource type="Script" uid="uid://ds7whuoat7bq8" path="res://scripts/floor.gd" id="3_mkths"]
+[ext_resource type="PackedScene" uid="uid://q7pehfvsq4w4" path="res://ui/camera_2d.tscn" id="5_cqxiv"]
 [ext_resource type="PackedScene" uid="uid://ckm7ixosi11en" path="res://npc/dialoger.tscn" id="5_mkths"]
 
 [sub_resource type="GDScript" id="GDScript_cqxiv"]
@@ -28,7 +29,7 @@ script = SubResource("GDScript_cqxiv")
 light_mask = 2
 visibility_layer = 2
 material = SubResource("ShaderMaterial_p1p0v")
-position = Vector2(1015.5005, 106.50007)
+position = Vector2(1024.9999, -169.03854)
 scale = Vector2(11.306588, 6.703452)
 skew = 1.3316863
 texture = ExtResource("1_m8ro5")
@@ -36,11 +37,11 @@ script = ExtResource("3_mkths")
 
 [node name="MainChar" parent="." instance=ExtResource("2_sr2jn")]
 position = Vector2(-2, -2)
-scale = Vector2(3.8636253, 3.8636253)
+scale = Vector2(4, 4)
 
-[node name="Camera2D" type="Camera2D" parent="MainChar"]
-position = Vector2(0.33786717, -13.852554)
-scale = Vector2(1.400196, 1.400196)
+[node name="Camera2D" parent="MainChar" instance=ExtResource("5_cqxiv")]
+position = Vector2(0, -47.759644)
+zoom = Vector2(1, 1)
 
 [node name="Dialoger" parent="." instance=ExtResource("5_mkths")]
 position = Vector2(342, -66)
