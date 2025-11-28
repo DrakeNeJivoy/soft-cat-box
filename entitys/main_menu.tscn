@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://q4xk6odctc33"]
+[gd_scene load_steps=3 format=3 uid="uid://q4xk6odctc33"]
 
 [ext_resource type="Script" uid="uid://bbcmnh5qi06vr" path="res://entitys/main_menu.gd" id="1_u1wf8"]
+[ext_resource type="FontFile" uid="uid://dvxjslssgsgw1" path="res://sprites/Fonts/PixelOperator8-Bold.ttf" id="2_aex4p"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -9,11 +10,30 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_u1wf8")
 
-[node name="Button" type="Button" parent="."]
+[node name="StarterButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 433.0
 offset_top = 135.0
 offset_right = 702.4194
 offset_bottom = 222.0
+theme_override_fonts/font = ExtResource("2_aex4p")
 text = "START GAME
 "
+
+[node name="OptionButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 433.0
+offset_top = 250.0
+offset_right = 702.4194
+offset_bottom = 337.0
+theme_override_fonts/font = ExtResource("2_aex4p")
+text = "OPTIONS"
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 433.0
+offset_top = 369.0
+offset_right = 702.4194
+offset_bottom = 456.0
+theme_override_fonts/font = ExtResource("2_aex4p")
+text = "EXIT"
