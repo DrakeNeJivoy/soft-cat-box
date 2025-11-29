@@ -9,6 +9,8 @@ var attack_time := 0.0      # кулдаун между атаками
 var attack_lifetime := 0.0  # время жизни слеша
 var attack_speed := 0.3     # скорость атаки (секунды)
 var is_attacking := false   # флаг атаки
+var attack_stage := 0          # 0 = нет атаки, 1 = первая атака, 2 = вторая атака
+var queued_attack := false     # игрок нажал кнопку повторно для комбо
 
 var slash_slice = false
 var fire_dash = false
@@ -34,7 +36,7 @@ func _ready() -> void:
 	GameManager.cng_ats.connect(_change_attack_speed)
 	GameManager.cng_perk.connect(_check_perks)
 	$Slashes.scale.x = -1
-	#GameManager
+	animated_sprite_2d.animation_finished.connect(_on_attack_animation_finished)
 	
 func _on_take_damage(amount: int) -> void:
 	current_health -= amount
@@ -76,6 +78,12 @@ func _physics_process(delta):
 		attack_lifetime += delta
 		if attack_lifetime >= attack_speed:
 			end_attack()
+		animated_sprite_2d.play("first_attack_"+facing_direction)
+		animated_sprite_2d.position.y = -39
+	else:
+		animated_sprite_2d.position.y = -25
+			
+	
 			
 	if is_attacking:
 		# Игрок заморожен, выходим из обработки ввода
@@ -100,9 +108,9 @@ func _physics_process(delta):
 		if input_vector.x != 0:  # только если есть ввод по горизонтали
 				$Slashes.scale.x = -1 if facing_direction == "right" else 1
 		
-		animated_sprite_2d.play("walk_" + facing_direction)
+		animated_sprite_2d.play("fight_run_" + facing_direction)
 	else:
-		animated_sprite_2d.play("idle_" + facing_direction)
+		animated_sprite_2d.play("fight_idle_" + facing_direction)
 
 	var accel = 800
 	var friction = 1200
@@ -175,3 +183,13 @@ func cast_slice():
 	get_tree().current_scene.add_child(wave)
 	if dir.x < 0:
 		wave.wave_sprite.flip_h = true
+		
+func _on_attack_animation_finished():
+	# Скрываем слеш сразу
+	for slash in slash_nodes:
+		slash.visible = false
+	
+	# Небольшая пауза перед завершением атаки
+	await get_tree().create_timer(0.1).timeout
+	# Флаг атаки снимается после паузы
+	is_attacking = false
