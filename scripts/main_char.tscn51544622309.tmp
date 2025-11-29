@@ -180,6 +180,8 @@ height = 62.378887
 
 [node name="MainChar" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_fsbk6")
+speed = null
+max_health = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -25.999998)

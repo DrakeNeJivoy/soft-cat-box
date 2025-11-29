@@ -185,8 +185,9 @@ script = ExtResource("1_fsbk6")
 position = Vector2(1, -25.999998)
 scale = Vector2(0.4616512, 0.4616512)
 sprite_frames = SubResource("SpriteFrames_4sk1i")
-animation = &"idle_right"
+animation = &"idle_left"
 autoplay = "idle_right"
+frame_progress = 0.15874484
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -22)
@@ -220,7 +221,6 @@ texture = ExtResource("8_iadgf")
 
 [node name="Slash1" parent="Slashes" instance=ExtResource("6_h4bng")]
 visible = false
-scale = Vector2(-1, 1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Slashes/Slash1"]
 position = Vector2(-17, -18)

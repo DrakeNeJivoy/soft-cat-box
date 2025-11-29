@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx3ep8r2vjb1e"]
+
+[ext_resource type="Script" uid="uid://7nfuk8b6ibdf" path="res://scripts/slash_area.gd" id="1_68pi7"]
+
+[node name="Slash" type="Area2D"]
+script = ExtResource("1_68pi7")
