@@ -3,7 +3,7 @@ extends Area2D
 
 class_name TakeDamage  # ← это даёт имя класса для GDScript
 
-@export var damage: int = 10
+@export var damage: int = 100
 var active: bool = true
 
 func _ready():

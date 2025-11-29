@@ -41,7 +41,7 @@ func params(current_elements):
 		slash_delay = 0.5
 	else: slash_delay = 1
 	if "Light" in current_elements:
-		slash_scale = 2
+		slash_scale = 1.4
 	else: slash_scale = 1
 	if "Fire" in current_elements and "Wind" in current_elements:
 		slash_dash = true
