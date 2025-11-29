@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjfbxga87a0ks"]
+[gd_scene load_steps=14 format=3 uid="uid://cjfbxga87a0ks"]
 
 [ext_resource type="Texture2D" uid="uid://dqhwf6g4fj5vk" path="res://sprites/preview.jpg" id="1_m8ro5"]
 [ext_resource type="Shader" uid="uid://chl4prgm45iw1" path="res://shaders/mainscene.gdshader" id="1_pfvb4"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d3abulrknt06c" path="res://entitys/take_damage.tscn" id="7_p1p0v"]
 [ext_resource type="Texture2D" uid="uid://dtflw26yow58i" path="res://icon.svg" id="8_cerdn"]
 [ext_resource type="PackedScene" uid="uid://cdhxnkh6cw7ic" path="res://entitys/game_over_panel.tscn" id="9_tlwtn"]
+[ext_resource type="PackedScene" uid="uid://sff5dn44ussn" path="res://entitys/enemy.tscn" id="10_ds6tt"]
 
 [sub_resource type="TileSet" id="TileSet_tlwtn"]
 tile_shape = 1
@@ -71,3 +72,6 @@ scale = Vector2(8.195534, 7.2705946)
 [node name="Sprite2D" type="Sprite2D" parent="TakeDamage"]
 scale = Vector2(0.13497414, 0.13497414)
 texture = ExtResource("8_cerdn")
+
+[node name="Enemy" parent="." instance=ExtResource("10_ds6tt")]
+position = Vector2(341, -251)

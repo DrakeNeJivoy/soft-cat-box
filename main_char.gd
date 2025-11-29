@@ -8,7 +8,7 @@ var dialog_active := false
 @export var max_health: int = 100
 var current_health: int
 
-var facing_direction := "righta"
+var facing_direction := "right"
 
 func _ready() -> void:
 	GlobalSignal.dialog_started.connect(_on_dialog_started)
