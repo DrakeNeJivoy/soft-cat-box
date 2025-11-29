@@ -15,7 +15,8 @@ var traveled := 0.0
 
 
 func _ready():
-	hit_area.body_entered.connect(_on_enemy_hit)
+	pass
+	#hit_area.body_entered.connect(_on_enemy_hit)
 
 
 func _physics_process(delta):
@@ -34,12 +35,17 @@ func set_direction(dir: Vector2):
 	direction = dir.normalized()
 
 
-func _on_enemy_hit(body: Node2D):
-	if body in enemies_hit:
-		return
+#func _on_enemy_hit(body: Node2D):
+	#if body in enemies_hit:
+		#return
+#
+	## запоминаем чтобы не ударять дважды
+	#enemies_hit.append(body)
+#
+	## распространяем на внешний мир
+	#emit_signal("hit", damage, body)
 
-	# запоминаем чтобы не ударять дважды
-	enemies_hit.append(body)
 
-	# распространяем на внешний мир
-	emit_signal("hit", damage, body)
+func _on_hit_area_body_entered(body: Node2D) -> void:
+	GlobalSignal.hit.emit(5)
+	print("Halo")
