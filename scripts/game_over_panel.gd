@@ -4,7 +4,6 @@ extends CanvasLayer
 @onready var panel: Panel = $Panel
 	
 func _ready():
-	$Panel/RestartButton.pressed.connect(Callable(self, "_on_restart_button_pressed"))
 	visible = false
 
 func show_game_over():
