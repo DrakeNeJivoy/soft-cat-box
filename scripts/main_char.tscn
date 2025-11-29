@@ -1,10 +1,13 @@
-[gd_scene load_steps=28 format=3 uid="uid://dnyrkg7g8lswe"]
+[gd_scene load_steps=31 format=3 uid="uid://dnyrkg7g8lswe"]
 
 [ext_resource type="Script" uid="uid://ce25s2wwe60j0" path="res://main_char.gd" id="1_fsbk6"]
 [ext_resource type="Texture2D" uid="uid://ckg30658j8wke" path="res://sprites/Char/IDLE_SW-Sheet.png" id="2_i1gkq"]
 [ext_resource type="Texture2D" uid="uid://cut0psot27pn8" path="res://sprites/Char/IDLE_SE-Sheet.png" id="2_ph5yx"]
 [ext_resource type="Texture2D" uid="uid://n3btfbi31igw" path="res://sprites/Char/WALKING_SE-Sheet.png" id="4_70neb"]
 [ext_resource type="Texture2D" uid="uid://n3ia4epo4rxl" path="res://sprites/Char/WALKING_SW-Sheet.png" id="5_ivx21"]
+[ext_resource type="Texture2D" uid="uid://b8wyj8qwlx7sc" path="res://sprites/fireB.png" id="6_b2vdg"]
+[ext_resource type="Texture2D" uid="uid://bbck521gjyibg" path="res://sprites/light.png" id="7_h4bng"]
+[ext_resource type="Texture2D" uid="uid://dj54j5octxad2" path="res://sprites/wind.png" id="8_iadgf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b2vdg"]
 atlas = ExtResource("2_ph5yx")
@@ -188,3 +191,26 @@ frame_progress = 0.15874484
 position = Vector2(0, -22)
 scale = Vector2(1.3712009, 0.4964557)
 shape = SubResource("CapsuleShape2D_i1gkq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(130, 0)
+offset_left = 8.0
+offset_top = -58.0
+offset_right = 138.0
+offset_bottom = 7.0
+scale = Vector2(0.095, 0.095)
+
+[node name="Fire" type="TextureRect" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("6_b2vdg")
+
+[node name="Light" type="TextureRect" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("7_h4bng")
+
+[node name="Wind" type="TextureRect" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("8_iadgf")

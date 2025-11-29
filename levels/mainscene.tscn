@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cjfbxga87a0ks"]
+[gd_scene load_steps=16 format=3 uid="uid://cjfbxga87a0ks"]
 
 [ext_resource type="Texture2D" uid="uid://dqhwf6g4fj5vk" path="res://sprites/preview.jpg" id="1_m8ro5"]
 [ext_resource type="Shader" uid="uid://chl4prgm45iw1" path="res://shaders/mainscene.gdshader" id="1_pfvb4"]
@@ -6,10 +6,12 @@
 [ext_resource type="Script" uid="uid://ds7whuoat7bq8" path="res://scripts/floor.gd" id="3_mkths"]
 [ext_resource type="PackedScene" uid="uid://q7pehfvsq4w4" path="res://ui/camera_2d.tscn" id="5_cqxiv"]
 [ext_resource type="PackedScene" uid="uid://ckm7ixosi11en" path="res://npc/dialoger.tscn" id="5_mkths"]
-[ext_resource type="PackedScene" uid="uid://d3abulrknt06c" path="res://entitys/take_damage.tscn" id="7_p1p0v"]
+[ext_resource type="PackedScene" path="res://entitys/take_damage.tscn" id="7_p1p0v"]
 [ext_resource type="Texture2D" uid="uid://dtflw26yow58i" path="res://icon.svg" id="8_cerdn"]
-[ext_resource type="PackedScene" uid="uid://cdhxnkh6cw7ic" path="res://entitys/game_over_panel.tscn" id="9_tlwtn"]
-[ext_resource type="PackedScene" uid="uid://sff5dn44ussn" path="res://entitys/enemy.tscn" id="10_ds6tt"]
+[ext_resource type="PackedScene" path="res://entitys/game_over_panel.tscn" id="9_tlwtn"]
+[ext_resource type="PackedScene" path="res://entitys/enemy.tscn" id="10_ds6tt"]
+[ext_resource type="Script" uid="uid://c4i7r4m4vnhwi" path="res://scripts/ui.gd" id="11_npph4"]
+[ext_resource type="PackedScene" uid="uid://cjbbaf0x34xin" path="res://ui/Inventory.tscn" id="12_iiusn"]
 
 [sub_resource type="TileSet" id="TileSet_tlwtn"]
 tile_shape = 1
@@ -60,6 +62,27 @@ zoom = Vector2(1, 1)
 
 [node name="GameOverPanel" parent="MainChar/Camera2D" instance=ExtResource("9_tlwtn")]
 visible = false
+
+[node name="UI" type="Control" parent="MainChar/Camera2D"]
+process_mode = 3
+z_index = 4096
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 0
+offset_top = 47.759644
+offset_right = 40.0
+offset_bottom = 87.75964
+scale = Vector2(0.25, 0.25)
+script = ExtResource("11_npph4")
+
+[node name="Inventory" parent="MainChar/Camera2D/UI" instance=ExtResource("12_iiusn")]
+process_mode = 3
+visible = false
+layout_mode = 1
+offset_left = -634.0
+offset_top = -553.0
+offset_right = -634.0
+offset_bottom = -553.0
 
 [node name="Dialoger" parent="." instance=ExtResource("5_mkths")]
 position = Vector2(342, -66)

@@ -2,6 +2,8 @@ extends CharacterBody2D
 @onready var main_char: CharacterBody2D = $"."
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+@onready var slots = [$HBoxContainer/Fire, $HBoxContainer/Light, $HBoxContainer/Wind]
+
 @export var speed := 700.0
 var dialog_active := false
 
@@ -16,6 +18,7 @@ func _ready() -> void:
 	current_health = max_health
 	# Подписка на глобальный сигнал
 	GlobalSignal.take_dmg.connect(Callable(self, "_on_take_damage"))
+	GameManager.change_element.connect(_change_element)
 	
 func _on_take_damage(amount: int) -> void:
 	current_health -= amount
@@ -74,3 +77,12 @@ func _on_dialog_started():
 	
 func _on_dialog_end():
 	dialog_active = false
+
+func _change_element():
+	var elements = GameManager.get_elements()
+	for bar in slots:
+		if bar.name in elements:
+			bar.visible = true
+		else:
+			bar.visible = false
+		

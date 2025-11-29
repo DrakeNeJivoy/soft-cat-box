@@ -4,6 +4,7 @@ signal open_dialog(text)
 signal dialog_started
 signal dialog_end
 signal take_dmg(amount: int)
+signal open_inventory
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

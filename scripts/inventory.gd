@@ -10,13 +10,24 @@ var dragging_slot: TextureRect = null
 var drag_preview: TextureRect = null
 
 func _ready() -> void:
+	GameManager.unlock_new_element.connect(_unlock_elements)
+	
 	for slot in right_slots + left_slots:
 		slot.mouse_filter = Control.MOUSE_FILTER_STOP
 
 	for slot in right_slots:
+		slot.visible = false
+		if slot.name in GameManager.get_unlock_element():
+			slot.visible = true
 		slot.gui_input.connect(_on_right_slot_input.bind(slot))
 	for slot in left_slots:
 		slot.gui_input.connect(_on_left_slot_input.bind(slot))
+	
+func _unlock_elements():
+	var check = GameManager.get_unlock_element()
+	for slot in right_slots:
+		if slot.name in GameManager.get_unlock_element():
+			slot.visible = true
 
 
 func _on_right_slot_input(event: InputEvent, slot: TextureRect):
