@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://sff5dn44ussn"]
+[gd_scene load_steps=17 format=3 uid="uid://sff5dn44ussn"]
 
 [ext_resource type="Texture2D" uid="uid://cyc1al0iixk5f" path="res://sprites/knight.png" id="1_7gf71"]
 [ext_resource type="Script" uid="uid://by0r6bqc51rii" path="res://scripts/enemy.gd" id="1_qaasr"]
+[ext_resource type="Texture2D" uid="uid://cfca5f48qpb3j" path="res://sprites/DONEpng.png" id="3_wvd63"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qaasr"]
 atlas = ExtResource("1_7gf71")
@@ -35,16 +36,103 @@ animations = [{
 "texture": SubResource("AtlasTexture_jqv6w")
 }],
 "loop": true,
-"name": &"default",
+"name": &"walk",
 "speed": 10.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3m3e"]
+size = Vector2(45.00027, 34.49975)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1elm"]
+atlas = ExtResource("3_wvd63")
+region = Rect2(2, 0, 26, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w71t2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1elm")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_l3m3e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_wvd63"]
+resource_name = "Attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 0, 2, 1, 3, 4]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.36666667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"activate_hitbox"
+}, {
+"args": [],
+"method": &"deactivate_hitbox"
+}, {
+"args": [],
+"method": &"end_attack"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jqv6w"]
+_data = {
+&"RESET": SubResource("Animation_l3m3e"),
+&"attack": SubResource("Animation_wvd63")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wvd63"]
 radius = 28.0
 height = 92.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_l3m3e"]
-radius = 26.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvd63"]
+size = Vector2(55.221737, 42.297493)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_qaasr")
@@ -53,14 +141,39 @@ script = ExtResource("1_qaasr")
 position = Vector2(0, -75)
 scale = Vector2(6.2063313, 6.2063313)
 sprite_frames = SubResource("SpriteFrames_iy53l")
-autoplay = "default"
+animation = &"walk"
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(67.49986, -41.249863)
+scale = Vector2(1, 0.99999946)
+shape = SubResource("RectangleShape2D_l3m3e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AttackArea"]
+position = Vector2(64.69519, -46.98551)
+rotation = -1.5704737
+scale = Vector2(1.7122068, 1.7850398)
+sprite_frames = SubResource("SpriteFrames_w71t2")
+animation = &"attack"
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AttackArea"]
+libraries = {
+&"": SubResource("AnimationLibrary_jqv6w")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -49)
+position = Vector2(-2, -36)
+scale = Vector2(1, 0.54104424)
 shape = SubResource("CapsuleShape2D_wvd63")
 
 [node name="HitBox" type="Area2D" parent="."]
+position = Vector2(67, -16)
+scale = Vector2(0.8511143, 0.8511143)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-2, -32)
-shape = SubResource("CircleShape2D_l3m3e")
+position = Vector2(0.58748627, -29.373264)
+shape = SubResource("RectangleShape2D_wvd63")
+
+[node name="Timer" type="Timer" parent="."]
