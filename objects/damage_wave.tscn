@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5xrw32nkg6kk"]
+
+[ext_resource type="Script" uid="uid://8d1vglyvapbo" path="res://objects/damage_wave.gd" id="1_q4ypm"]
+[ext_resource type="Texture2D" uid="uid://dqtfkr0o24hoi" path="res://sprites/Explosion.png" id="2_e8teu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e8teu"]
+radius = 12.0415945
+
+[node name="DamageWave" type="Node2D"]
+rotation = 0.43633232
+skew = 0.7295476
+script = ExtResource("1_q4ypm")
+
+[node name="HitArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource("CircleShape2D_e8teu")
+
+[node name="WaveSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("2_e8teu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e8teu")
+
+[connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]

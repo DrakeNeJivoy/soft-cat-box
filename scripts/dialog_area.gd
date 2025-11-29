@@ -33,19 +33,23 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if player_in_range and Input.is_action_just_pressed("interact"):
+		GameManager.add_unlock_element("Fire")
+		GameManager.add_unlock_element("Wind")
+		GameManager.add_unlock_element("Light")
 		GlobalSignal.emit_signal("open_dialog", dialog_text)
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if dialog_sign and body.name == 'MainChar':
 		dialog_sign.visible = true
+		player_in_range = true
 	else:
 		print("Неа")
-	player_in_range = true
 
 func _on_body_exited(body: Node2D) -> void:
 	if dialog_sign and body.name == 'MainChar':
 		dialog_sign.visible = false
+		player_in_range = false
 	else:
 		print("Неа")
-	player_in_range = false
+	
