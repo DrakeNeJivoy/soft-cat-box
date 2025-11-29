@@ -12,9 +12,9 @@ script = ExtResource("1_u1wf8")
 
 [node name="StarterButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 433.0
+offset_left = 489.0
 offset_top = 135.0
-offset_right = 702.4194
+offset_right = 758.4194
 offset_bottom = 222.0
 theme_override_fonts/font = ExtResource("2_aex4p")
 text = "START GAME
@@ -22,18 +22,18 @@ text = "START GAME
 
 [node name="OptionButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 433.0
+offset_left = 489.0
 offset_top = 250.0
-offset_right = 702.4194
+offset_right = 758.4194
 offset_bottom = 337.0
 theme_override_fonts/font = ExtResource("2_aex4p")
 text = "OPTIONS"
 
 [node name="ExitButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 433.0
+offset_left = 489.0
 offset_top = 369.0
-offset_right = 702.4194
+offset_right = 758.4194
 offset_bottom = 456.0
 theme_override_fonts/font = ExtResource("2_aex4p")
 text = "EXIT"
