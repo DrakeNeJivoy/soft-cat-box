@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjfbxga87a0ks"]
+[gd_scene load_steps=13 format=3 uid="uid://cjfbxga87a0ks"]
 
 [ext_resource type="Texture2D" uid="uid://dqhwf6g4fj5vk" path="res://sprites/preview.jpg" id="1_m8ro5"]
 [ext_resource type="Shader" uid="uid://chl4prgm45iw1" path="res://shaders/mainscene.gdshader" id="1_pfvb4"]
@@ -6,6 +6,13 @@
 [ext_resource type="Script" uid="uid://ds7whuoat7bq8" path="res://scripts/floor.gd" id="3_mkths"]
 [ext_resource type="PackedScene" uid="uid://q7pehfvsq4w4" path="res://ui/camera_2d.tscn" id="5_cqxiv"]
 [ext_resource type="PackedScene" uid="uid://ckm7ixosi11en" path="res://npc/dialoger.tscn" id="5_mkths"]
+[ext_resource type="PackedScene" uid="uid://d3abulrknt06c" path="res://entitys/take_damage.tscn" id="7_p1p0v"]
+[ext_resource type="Texture2D" uid="uid://dtflw26yow58i" path="res://icon.svg" id="8_cerdn"]
+[ext_resource type="PackedScene" uid="uid://cdhxnkh6cw7ic" path="res://entitys/game_over_panel.tscn" id="9_tlwtn"]
+
+[sub_resource type="TileSet" id="TileSet_tlwtn"]
+tile_shape = 1
+tile_size = Vector2i(64, 64)
 
 [sub_resource type="GDScript" id="GDScript_cqxiv"]
 script/source = "extends StaticBody2D
@@ -18,6 +25,13 @@ shader_parameter/map_height = 250.0
 shader_parameter/tilt_amount = 0.3
 
 [node name="First Level" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(1, 0.99999994)
+skew = 0.7853982
+tile_set = SubResource("TileSet_tlwtn")
+rendering_quadrant_size = 32
+format = 2
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 light_mask = 2
@@ -43,6 +57,17 @@ scale = Vector2(4, 4)
 position = Vector2(0, -47.759644)
 zoom = Vector2(1, 1)
 
+[node name="GameOverPanel" parent="MainChar/Camera2D" instance=ExtResource("9_tlwtn")]
+visible = false
+
 [node name="Dialoger" parent="." instance=ExtResource("5_mkths")]
 position = Vector2(342, -66)
 scale = Vector2(3.864, 3.864)
+
+[node name="TakeDamage" parent="." instance=ExtResource("7_p1p0v")]
+position = Vector2(-385, -42)
+scale = Vector2(8.195534, 7.2705946)
+
+[node name="Sprite2D" type="Sprite2D" parent="TakeDamage"]
+scale = Vector2(0.13497414, 0.13497414)
+texture = ExtResource("8_cerdn")

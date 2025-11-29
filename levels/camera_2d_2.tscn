@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://du5se7nhs0d56"]
+[gd_scene load_steps=0 format=3 uid="uid://du5se7nhs0d56"]
 
 [node name="Camera2D2" type="Camera2D"]
 
