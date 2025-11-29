@@ -1,137 +1,186 @@
 extends CharacterBody2D
 
 # --- ПАРАМЕТРЫ ---
-@export var speed := 200.0
-@export var attack_distance := 150.0
+@export var speed := 250.0
+@export var attack_distance := 100.0
 @export var attack_cooldown := 1.0
-@export var damage := 10
+@export var damage := 25
 
 # --- СОСТОЯНИЯ ---
 var player: Node2D
 var is_attacking := false
 var can_attack := true
 var already_hit := false
-var hitbox_active := false
+var facing := 1   # 1 = right, -1 = left
 
 # --- УЗЛЫ ---
 @onready var anim_sprite: AnimatedSprite2D = $EnemySprite
-@onready var attack_anim: AnimatedSprite2D = $AttackArea/AnimatedSprite2D
-@onready var attack_player: AnimationPlayer = $AttackArea/AnimationPlayer
-@onready var hitbox_area: Area2D = $HitBox
-@onready var hitbox_shape: CollisionShape2D = $HitBox/CollisionShape2D
+@onready var area_attack: AnimatedSprite2D = $AreaAttack/AnimatedSprite2D
+@onready var area_attack_area: Area2D = $AreaAttack
+@onready var hitbox_right: Area2D = $HitBoxRight
+@onready var hitbox_left: Area2D = $HitBoxLeft
+@onready var hitbox_right_shape: CollisionShape2D = $HitBoxRight/HitBox_RightCollision
+@onready var hitbox_left_shape: CollisionShape2D = $HitBoxLeft/HitBox_LeftCollision
+
 @onready var timer: Timer = $Timer
+
 
 func _ready():
 	var players = get_tree().get_nodes_in_group("player")
 	if players.size() > 0:
 		player = players[0]
-
+	
 	timer.one_shot = true
-	if not timer.timeout.is_connected(_on_attack_cooldown_finished):
-		timer.timeout.connect(_on_attack_cooldown_finished)
+	timer.timeout.connect(_on_attack_cooldown_finished)
+	hitbox_right.connect("body_entered", Callable(self, "_on_hitbox_body_entered"))
+	hitbox_left.connect("body_entered", Callable(self, "_on_hitbox_body_entered"))
+	# Отключаем оба хитбокса по умолчанию
+	_disable_hitboxes()
 
-	hitbox_shape.disabled = true
-	hitbox_area.monitoring = false
-
-	if not hitbox_area.body_entered.is_connected(_on_hitbox_body_entered):
-		hitbox_area.body_entered.connect(_on_hitbox_body_entered)
 
 func _physics_process(delta):
 	if not player:
 		return
-	
-	_face_player()  # поворачиваемся к игроку каждый кадрф
-	var distance = position.distance_to(player.position)
-	
-	
-	# Когда атакует, враг стоит
+
+	var dist = position.distance_to(player.position)
+
+	# Если идёт атака — не двигаться
 	if is_attacking:
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
-		
-	if distance > attack_distance:
-		attack_player.stop()      # Останавливаем AnimationPlayer
-		deactivate_hitbox()       # Выключаем хитбокс
-		end_attack()              # Завершаем атаку
+
+	# Если игрок на дистанции атаки — атаковать
+	if dist <= attack_distance:
+		velocity = Vector2.ZERO
+		move_and_slide()
+
+		if can_attack:
+			_start_attack()
+		return
+
+	# Иначе двигаться к игроку
+	_move_to_player(delta)
+	_update_attack_direction()
+
+
+# --- ДВИЖЕНИЕ ---
+func _move_to_player(delta):
+	if not player:
 		return
 	
-		
+	var dist = position.distance_to(player.position)
+	var y_diff = player.position.y - position.y
+	if abs(y_diff) > 5:
+		velocity = Vector2(0, sign(y_diff) * speed)
+		move_and_slide()
+		return
 	
-	# Если игрок в радиусе атаки
-	if distance <= attack_distance:
+	var x_diff = player.position.x - position.x
+	if abs(x_diff) > attack_distance:
+		velocity = Vector2(sign(x_diff) * speed, 0)
+		move_and_slide()
+	else:
 		velocity = Vector2.ZERO
 		move_and_slide()
 		if can_attack:
 			_start_attack()
-		return	
-	 # Иначе идёт к игроку
-	_move_to_player(delta)
 
+	# Визуальный поворот спрайта
+	if player.global_position.x < global_position.x:
+		anim_sprite.flip_h = true
+		facing = -1
+	else:
+		anim_sprite.flip_h = false
+		facing = 1
 
-func _move_to_player(delta):
-	var dir = (player.position - position).normalized()
-	velocity = dir * speed
-	move_and_slide()
 	anim_sprite.play("walk")
 
-func _face_player():
-	if not player:
-		return
-	
-	if player.position.x > position.x:
-		anim_sprite.flip_h = false    # смотрим вправо
-		attack_anim.flip_h = false
-		$AttackArea.position.x = abs($AttackArea.position.x)
-	else:
-		anim_sprite.flip_h = true     # смотрим влево
-		attack_anim.flip_h = true
-		$AttackArea.position.x = -abs($AttackArea.position.x)
 
 # --- АТАКА ---
 func _start_attack():
-	if is_attacking:
-		return
 	is_attacking = true
 	can_attack = false
 	already_hit = false
-
+	
 	velocity = Vector2.ZERO
 	move_and_slide()
-	anim_sprite.play("walk")
-	attack_anim.play("attack")	
-	attack_player.play("attack")
-	_face_player()
+	
+	_update_attack_direction()
+	
+	area_attack.play("attack")
+	
+	await area_attack.animation_finished
+	_end_attack()
 
 
-# --- AnimationPlayer Call Methods ---
-func activate_hitbox():
-	hitbox_active = true
-	hitbox_shape.disabled = false
-	hitbox_area.monitoring = true
+# --- НОВАЯ ФУНКЦИЯ: зеркалирование и позиционирование области атаки ---
+### >>> NEW
+func _update_attack_direction():
+	if player.global_position.x < global_position.x:
+		# Игрок слева
+		area_attack.flip_h = false
+		area_attack.position.x = 0
+		facing = -1
+	else:
+		# Игрок справа
+		area_attack.flip_h = true
+		area_attack.position.x = 0
+		facing = 1
+### <<< NEWa	
 
-func deactivate_hitbox():
-	hitbox_active = false
-	hitbox_shape.disabled = true
-	hitbox_area.monitoring = false
 
-func end_attack():
+# --- ВЫКЛЮЧЕНИЕ АТАКИ ---
+func _end_attack():
 	is_attacking = false
+	_disable_hitboxes()
 	timer.start(attack_cooldown)
+	area_attack.play("walking")
 
 
-# --- Кулдаун ---
 func _on_attack_cooldown_finished():
 	can_attack = true
 
 
-# --- НАНЕСЕНИЕ УРОНА ---
-func _on_hitbox_body_entered(body):
-	if not hitbox_active:
-		return
-	if already_hit:
-		return
+# --- ХИТБОКСЫ ---
+func _enable_hitbox_for_current_side():
+	if facing == 1:
+		hitbox_right_shape.disabled = false
+		hitbox_left_shape.disabled = false
+		hitbox_right.connect("body_entered", Callable(self, "_on_hitbox_body_entered"))
+	else:
+		hitbox_right_shape.disabled = false
+		hitbox_left_shape.disabled = false
+		hitbox_left.connect("body_entered", Callable(self, "_on_hitbox_body_entered"))
 
-	if body.is_in_group("player"):
+
+func _disable_hitboxes():
+	hitbox_right_shape.disabled = true
+	hitbox_left_shape.disabled = true
+	
+	var right_callable = Callable(self, "_on_hitbox_body_entered")
+	var left_callable = Callable(self, "_on_hitbox_body_entered")
+	
+	if hitbox_right.is_connected("body_entered", right_callable):
+		hitbox_right.disconnect("body_entered", right_callable)
+	if hitbox_left.is_connected("body_entered", left_callable):
+		hitbox_left.disconnect("body_entered", left_callable)
+
+
+func _on_hitbox_body_entered(body):
+	if is_attacking and not already_hit and body.is_in_group("player"):
 		already_hit = true
 		GlobalSignal.take_dmg.emit(damage)
+
+func activate_hitbox():
+	already_hit = false
+	if facing == 1:
+		hitbox_right_shape.disabled = false
+		hitbox_left_shape.disabled = true
+	else:
+		hitbox_right_shape.disabled = true
+		hitbox_left_shape.disabled = false
+	
+func deactivate_hitbox():
+	_disable_hitboxes()
+		
