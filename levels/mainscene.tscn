@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjfbxga87a0ks"]
+[gd_scene load_steps=18 format=3 uid="uid://cjfbxga87a0ks"]
 
 [ext_resource type="Texture2D" uid="uid://c2f5t1d7evnev" path="res://sprites/Industrial_Freight_Elevator_Tileset.png" id="1_falil"]
 [ext_resource type="Texture2D" uid="uid://dqhwf6g4fj5vk" path="res://sprites/preview.jpg" id="1_m8ro5"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" path="res://entitys/take_damage.tscn" id="7_p1p0v"]
 [ext_resource type="Texture2D" uid="uid://dtflw26yow58i" path="res://icon.svg" id="8_cerdn"]
 [ext_resource type="PackedScene" path="res://entitys/game_over_panel.tscn" id="9_tlwtn"]
-[ext_resource type="PackedScene" path="res://entitys/enemy.tscn" id="10_ds6tt"]
+[ext_resource type="PackedScene" uid="uid://sff5dn44ussn" path="res://entitys/enemy.tscn" id="10_ds6tt"]
 [ext_resource type="Script" uid="uid://c4i7r4m4vnhwi" path="res://scripts/ui.gd" id="11_npph4"]
 [ext_resource type="PackedScene" uid="uid://cjbbaf0x34xin" path="res://ui/Inventory.tscn" id="12_iiusn"]
 

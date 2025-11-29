@@ -2293,6 +2293,7 @@ texture = ExtResource("8_iadgf")
 [node name="Slashes" type="Node2D" parent="."]
 
 [node name="Slash1" parent="Slashes" instance=ExtResource("6_h4bng")]
+visible = false
 z_index = 1
 scale = Vector2(-1, 1)
 
