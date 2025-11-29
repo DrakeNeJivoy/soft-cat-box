@@ -1,6 +1,6 @@
 extends Control
 
-@onready var right_slots = [$RightSide/Slot1, $RightSide/Slot2, $RightSide/Slot3]
+@onready var right_slots = [$RightSide/Fire, $RightSide/Light, $RightSide/Wind]
 @onready var left_slots  = [$LeftSide/ActiveSlot1, $LeftSide/ActiveSlot2]
 
 # Откуда пришёл предмет в активный слот
@@ -10,22 +10,35 @@ var dragging_slot: TextureRect = null
 var drag_preview: TextureRect = null
 
 func _ready() -> void:
+	GameManager.unlock_new_element.connect(_unlock_elements)
+	
 	for slot in right_slots + left_slots:
 		slot.mouse_filter = Control.MOUSE_FILTER_STOP
 
 	for slot in right_slots:
+		slot.visible = false
+		if slot.name in GameManager.get_unlock_element():
+			slot.visible = true
 		slot.gui_input.connect(_on_right_slot_input.bind(slot))
 	for slot in left_slots:
 		slot.gui_input.connect(_on_left_slot_input.bind(slot))
+	
+func _unlock_elements():
+	var check = GameManager.get_unlock_element()
+	for slot in right_slots:
+		if slot.name in GameManager.get_unlock_element():
+			slot.visible = true
 
 
 func _on_right_slot_input(event: InputEvent, slot: TextureRect):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		var icon = slot.get_node("ItemIcon")
+		var name = slot.name
+		#_change_element(name, "add")
 		if event.pressed and icon.texture:
 			_start_drag(slot, icon)
 		elif !event.pressed and dragging_slot:
-			_try_drop()
+			_try_drop(name)
 
 
 func _on_left_slot_input(event: InputEvent, slot: TextureRect):
@@ -33,6 +46,8 @@ func _on_left_slot_input(event: InputEvent, slot: TextureRect):
 		var icon = slot.get_node("ItemIcon")
 		if icon.texture:
 			var home_slot_parent = left_slot_source[slot]
+			var name = left_slot_source[slot].name
+			_change_element(name, "remove")
 			var home_icon = home_slot_parent.get_node("ItemIcon")
 			home_icon.texture = icon.texture
 			icon.texture = null
@@ -62,7 +77,7 @@ func _input(event: InputEvent):
 		get_viewport().set_input_as_handled()
 
 
-func _try_drop():
+func _try_drop(name):
 	for left_slot in left_slots:
 		if left_slot.get_global_rect().has_point(get_global_mouse_position()):
 			var target_icon = left_slot.get_node("ItemIcon")
@@ -72,6 +87,7 @@ func _try_drop():
 				target_icon.size = source_icon.size
 				source_icon.texture = null
 				left_slot_source[left_slot] = dragging_slot
+				_change_element(name, "add")
 				_finish_drag()
 				return
 	_cancel_drag()
@@ -88,3 +104,13 @@ func _finish_drag():
 		dragging_slot.modulate = Color(1, 1, 1, 1)
 	dragging_slot = null
 	drag_preview = null
+	
+func _change_element(name, actions):
+	if actions == "add":
+		GameManager.add_element(name)
+		var elements = GameManager.get_elements()
+		print(elements)
+	if actions == "remove":
+		GameManager.remove_element(name)
+		var elements = GameManager.get_elements()
+		print(elements)
