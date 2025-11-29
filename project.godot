@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalSignal="*res://scripts/GlobalScripts/GlobalSignal.gd"
+GameManager="*res://scripts/GlobalScripts/GameManager.gd"
 
 [display]
 

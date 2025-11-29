@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvsoxmdtn84fn"]
+[gd_scene load_steps=9 format=3 uid="uid://cjbbaf0x34xin"]
 
 [ext_resource type="Script" uid="uid://cxdas0c0skjgn" path="res://scripts/inventory.gd" id="1_0sq80"]
 [ext_resource type="Texture2D" uid="uid://bpdmlhxd3p2pv" path="res://sprites/belt.png" id="2_0dflw"]
@@ -20,9 +20,9 @@ script = ExtResource("1_0sq80")
 
 [node name="TextureRect4" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 384.0
+offset_left = 429.0
 offset_top = 181.0
-offset_right = 550.0
+offset_right = 595.0
 offset_bottom = 255.00002
 scale = Vector2(5, 5)
 mouse_filter = 2
@@ -33,16 +33,16 @@ layout_mode = 0
 offset_left = 15.000002
 offset_right = 369.0
 offset_bottom = 643.63635
-scale = Vector2(1.0400003, 1)
+scale = Vector2(1.0400003, 1.1200001)
 mouse_filter = 2
 texture = ExtResource("3_32pad")
 
 [node name="LeftSide" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 60.0
-offset_top = 151.0
+offset_top = 198.0
 offset_right = 650.0
-offset_bottom = 651.0
+offset_bottom = 698.0
 scale = Vector2(1, 1.0051146)
 theme_override_constants/separation = 16
 
@@ -74,20 +74,20 @@ expand_mode = 5
 
 [node name="RightSide" type="HBoxContainer" parent="."]
 layout_mode = 1
-offset_left = 565.0
+offset_left = 610.0
 offset_top = 162.0
-offset_right = 1155.0
+offset_right = 1200.0
 offset_bottom = 662.0
 scale = Vector2(1, 1.0051146)
 theme_override_constants/separation = 70
 
-[node name="Slot1" type="TextureRect" parent="RightSide"]
+[node name="Fire" type="TextureRect" parent="RightSide"]
 custom_minimum_size = Vector2(150, 500)
 layout_mode = 2
 mouse_filter = 0
 expand_mode = 2
 
-[node name="DragPreview" type="TextureRect" parent="RightSide/Slot1"]
+[node name="DragPreview" type="TextureRect" parent="RightSide/Fire"]
 visible = false
 layout_mode = 0
 offset_left = 17.0
@@ -96,7 +96,7 @@ offset_right = 140.33301
 offset_bottom = 382.746
 scale = Vector2(1.2, 1.2)
 
-[node name="ItemIcon" type="TextureRect" parent="RightSide/Slot1"]
+[node name="ItemIcon" type="TextureRect" parent="RightSide/Fire"]
 layout_mode = 0
 offset_right = 123.33319
 offset_bottom = 381.74567
@@ -104,13 +104,13 @@ scale = Vector2(1.2000009, 1.2000009)
 texture = ExtResource("5_o2k5w")
 expand_mode = 5
 
-[node name="Slot2" type="TextureRect" parent="RightSide"]
+[node name="Light" type="TextureRect" parent="RightSide"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 mouse_filter = 0
 expand_mode = 2
 
-[node name="DragPreview" type="TextureRect" parent="RightSide/Slot2"]
+[node name="DragPreview" type="TextureRect" parent="RightSide/Light"]
 visible = false
 layout_mode = 0
 offset_left = 22.0
@@ -119,7 +119,7 @@ offset_right = 145.33301
 offset_bottom = 385.746
 scale = Vector2(1.2, 1.2)
 
-[node name="ItemIcon" type="TextureRect" parent="RightSide/Slot2"]
+[node name="ItemIcon" type="TextureRect" parent="RightSide/Light"]
 layout_mode = 0
 offset_right = 123.33301
 offset_bottom = 381.746
@@ -127,20 +127,13 @@ scale = Vector2(1.2, 1.2)
 texture = ExtResource("6_mum1w")
 expand_mode = 5
 
-[node name="ItemIcon2" type="TextureRect" parent="RightSide/Slot2"]
-layout_mode = 0
-offset_left = 28.0
-offset_top = 6.0
-offset_right = 126.0
-offset_bottom = 138.0
-
-[node name="Slot3" type="TextureRect" parent="RightSide"]
+[node name="Wind" type="TextureRect" parent="RightSide"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 mouse_filter = 0
 expand_mode = 2
 
-[node name="DragPreview" type="TextureRect" parent="RightSide/Slot3"]
+[node name="DragPreview" type="TextureRect" parent="RightSide/Wind"]
 visible = false
 layout_mode = 0
 offset_left = 28.0
@@ -149,7 +142,7 @@ offset_right = 151.33301
 offset_bottom = 386.746
 scale = Vector2(1.2, 1.2)
 
-[node name="ItemIcon" type="TextureRect" parent="RightSide/Slot3"]
+[node name="ItemIcon" type="TextureRect" parent="RightSide/Wind"]
 layout_mode = 0
 offset_right = 123.33301
 offset_bottom = 381.746
@@ -162,15 +155,15 @@ layout_mode = 0
 offset_left = 15.0
 offset_right = 369.0
 offset_bottom = 643.636
-scale = Vector2(1.04, 1)
+scale = Vector2(1.04, 1.1200001)
 mouse_filter = 2
 texture = ExtResource("8_w4un8")
 
 [node name="TextureRect3" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 516.0
+offset_left = 561.0
 offset_top = 271.00006
-offset_right = 656.0
+offset_right = 701.0
 offset_bottom = 323.00006
 scale = Vector2(5, 5)
 mouse_filter = 2
