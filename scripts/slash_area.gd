@@ -69,7 +69,7 @@ func params(current_elements):
 func _on_body_entered(body: Node2D) -> void:
 	if visible:
 		if body.is_in_group("enemy") or body.name == "Enemy":
-			GlobalSignal.hit.emit(slash_damage)
+			GlobalSignal.hit.emit(slash_damage, body)
 			if slash_boom:
 				print(slash_boom)
 				cast_wave(body)

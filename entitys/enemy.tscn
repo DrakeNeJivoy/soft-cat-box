@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://sff5dn44ussn"]
+[gd_scene load_steps=24 format=3 uid="uid://bvkoov0bhq2ny"]
 
 [ext_resource type="Script" uid="uid://by0r6bqc51rii" path="res://scripts/enemy.gd" id="1_qaasr"]
 [ext_resource type="Texture2D" uid="uid://dnsu8d1llqtul" path="res://sprites/KazakhsThanos/Fist_SW-Sheet.png" id="2_l3m3e"]
@@ -100,7 +100,7 @@ animations = [{
 }]
 
 [sub_resource type="Animation" id="Animation_l3m3e"]
-length = 0.001
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -108,10 +108,30 @@ tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 1.1, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [4]
+"values": [4, 1, 2, 4]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"activate_hitbox"
+}, {
+"args": [],
+"method": &"deactivate_hitbox"
+}, {
+"args": [],
+"method": &"_end_attack"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_wvd63"]
@@ -203,8 +223,6 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 physics_interpolation_mode = 2
-light_mask = 2
-visibility_layer = 2
 position = Vector2(-2, -91)
 scale = Vector2(1.4331683, 1.2362251)
 shape = SubResource("CapsuleShape2D_wvd63")
