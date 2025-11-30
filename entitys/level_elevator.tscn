@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://c7eweixmsjhme"]
+[gd_scene load_steps=26 format=4 uid="uid://c2coyt1h0aqm8"]
 
 [ext_resource type="Texture2D" uid="uid://dhcotg7ab7bxp" path="res://sprites/Tiles/Ecopunk_Airship_Interior_Map.png" id="1_esajj"]
 [ext_resource type="Texture2D" uid="uid://du8l0wpkj26cq" path="res://sprites/Tiles/Cyberpunk_Trader_Floor_Tileset.png" id="2_xmw25"]
@@ -10,7 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://q7pehfvsq4w4" path="res://ui/camera_2d.tscn" id="8_hnwf0"]
 [ext_resource type="PackedScene" uid="uid://cdhxnkh6cw7ic" path="res://entitys/game_over_panel.tscn" id="9_v3v6l"]
 [ext_resource type="Script" uid="uid://c4i7r4m4vnhwi" path="res://scripts/ui.gd" id="10_fi2om"]
-[ext_resource type="PackedScene" path="res://ui/Inventory.tscn" id="11_p8use"]
+[ext_resource type="PackedScene" uid="uid://cjbbaf0x34xin" path="res://ui/Inventory.tscn" id="11_p8use"]
+[ext_resource type="AudioStream" uid="uid://ccaafg65j2fmf" path="res://music/minions.mp3" id="12_hnwf0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v1qcs"]
 texture = ExtResource("1_esajj")
@@ -2857,3 +2858,8 @@ shape = SubResource("RectangleShape2D_yl2xj")
 z_index = 50
 position = Vector2(3170, -640)
 shape = SubResource("RectangleShape2D_hnwf0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_hnwf0")
+volume_db = -25.761
+autoplay = true

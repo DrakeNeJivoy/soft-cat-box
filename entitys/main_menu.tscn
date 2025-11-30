@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://q4xk6odctc33"]
+[gd_scene load_steps=4 format=3 uid="uid://q4xk6odctc33"]
 
 [ext_resource type="Script" uid="uid://bbcmnh5qi06vr" path="res://entitys/main_menu.gd" id="1_u1wf8"]
 [ext_resource type="FontFile" uid="uid://dvxjslssgsgw1" path="res://sprites/Fonts/PixelOperator8-Bold.ttf" id="2_aex4p"]
+[ext_resource type="AudioStream" uid="uid://3j7vkj3j0txl" path="res://music/Embience 1.mp3" id="3_0n7i5"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -37,3 +38,8 @@ offset_right = 758.4194
 offset_bottom = 456.0
 theme_override_fonts/font = ExtResource("2_aex4p")
 text = "EXIT"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0n7i5")
+volume_db = -23.853
+autoplay = true
