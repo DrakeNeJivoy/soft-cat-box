@@ -5,11 +5,13 @@
 [ext_resource type="Shader" uid="uid://chl4prgm45iw1" path="res://shaders/mainscene.gdshader" id="1_pfvb4"]
 [ext_resource type="PackedScene" uid="uid://dnyrkg7g8lswe" path="res://scripts/main_char.tscn" id="2_sr2jn"]
 [ext_resource type="Script" uid="uid://ds7whuoat7bq8" path="res://scripts/floor.gd" id="3_mkths"]
+[ext_resource type="Texture2D" uid="uid://s50bua7okct8" path="res://sprites/Ecopunk_Tiles_Seamless_64x64.png" id="4_5mgul"]
 [ext_resource type="PackedScene" uid="uid://q7pehfvsq4w4" path="res://ui/camera_2d.tscn" id="5_cqxiv"]
 [ext_resource type="PackedScene" uid="uid://ckm7ixosi11en" path="res://npc/dialoger.tscn" id="5_mkths"]
 [ext_resource type="PackedScene" uid="uid://d3abulrknt06c" path="res://entitys/take_damage.tscn" id="7_p1p0v"]
 [ext_resource type="Texture2D" uid="uid://dtflw26yow58i" path="res://icon.svg" id="8_cerdn"]
 [ext_resource type="PackedScene" uid="uid://cdhxnkh6cw7ic" path="res://entitys/game_over_panel.tscn" id="9_tlwtn"]
+[ext_resource type="PackedScene" uid="uid://sff5dn44ussn" path="res://entitys/enemy.tscn" id="10_ds6tt"]
 [ext_resource type="Script" uid="uid://c4i7r4m4vnhwi" path="res://scripts/ui.gd" id="11_npph4"]
 [ext_resource type="PackedScene" path="res://ui/Inventory.tscn" id="12_iiusn"]
 [ext_resource type="PackedScene" path="res://entitys/airship_enemy.tscn" id="14_5mgul"]
@@ -26,17 +28,27 @@ shader_parameter/map_width = 250.0
 shader_parameter/map_height = 250.0
 shader_parameter/tilt_amount = 0.3
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_npph4"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a5yuu"]
+texture = ExtResource("4_5mgul")
+separation = Vector2i(3, 2)
+texture_region_size = Vector2i(65, 65)
+0:0/size_in_atlas = Vector2i(5, 5)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iiusn"]
 texture = ExtResource("1_falil")
 margins = Vector2i(4, 0)
 texture_region_size = Vector2i(67, 67)
 0:0/size_in_atlas = Vector2i(5, 5)
 0:0/0 = 0
+5:0/size_in_atlas = Vector2i(5, 5)
+5:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_tlwtn"]
 tile_shape = 1
 tile_size = Vector2i(64, 64)
-sources/3 = SubResource("TileSetAtlasSource_npph4")
+sources/3 = SubResource("TileSetAtlasSource_iiusn")
+sources/0 = SubResource("TileSetAtlasSource_a5yuu")
 
 [node name="First Level" type="Node2D"]
 
@@ -63,7 +75,7 @@ skew = 0.7853982
 tile_set = SubResource("TileSet_tlwtn")
 rendering_quadrant_size = 32
 format = 2
-layer_0/tile_data = PackedInt32Array(-1, 3, 0, -65532, 3, 0, -6, 3, 0, -655361, 3, 0, -720892, 3, 0, -655366, 3, 0, -11, 3, 0, -16, 3, 0, -655371, 3, 0, -655376, 3, 0, -65527, 3, 0, -720887, 3, 0, -65522, 3, 0, -720882, 3, 0, -1376242, 3, 0, -1376247, 3, 0, -1376252, 3, 0, -1310721, 3, 0, -1310726, 3, 0, -1310731, 3, 0, -1310736, 3, 0, 589833, 3, 0, 589828, 3, 0, 655359, 3, 0, 655354, 3, 0, 655349, 3, 0, -2031607, 3, 0, -2031612, 3, 0, -1966081, 3, 0, -1966086, 3, 0, -1966091, 3, 0, 589838, 3, 0, 655344, 3, 0, -1966096, 3, 0, -2031602, 3, 0)
+layer_0/tile_data = PackedInt32Array(-1, 3, 0, -65532, 3, 0, -6, 3, 0, -655361, 3, 0, -720892, 3, 0, -655366, 3, 0, -11, 3, 0, -16, 3, 0, -655371, 3, 0, -655376, 3, 0, -65527, 3, 0, -720887, 3, 0, -65522, 3, 0, -720882, 3, 0, -1376242, 3, 0, -1376247, 3, 0, -1376252, 3, 0, -1310721, 3, 0, -1310726, 3, 0, -1310731, 3, 0, -1310736, 3, 0, 589833, 3, 0, 589828, 3, 0, 655359, 3, 0, 655354, 3, 0, 655349, 3, 0, -2031607, 3, 0, -2031612, 3, 0, -1966081, 3, 0, -1966086, 3, 0, -1966091, 3, 0, 589838, 3, 0, 655344, 3, 0, -1966096, 3, 0, -2031602, 3, 0, -65517, 327683, 0, -65512, 327683, 0, -65507, 0, 0, -65502, 0, 0, -65497, 0, 0)
 
 [node name="MainChar" parent="." instance=ExtResource("2_sr2jn")]
 position = Vector2(-2, -2)
