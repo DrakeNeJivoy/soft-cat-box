@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://q4dgyq0nc37l"]
+
+[ext_resource type="Script" uid="uid://dwj46ebqy6d1d" path="res://dialoger.gd" id="1_q1khe"]
+[ext_resource type="Texture2D" uid="uid://bejy0vrvnyrr1" path="res://sprites/TRADER_IDLE.png" id="2_q1khe"]
+[ext_resource type="PackedScene" uid="uid://dmredt2im7vvl" path="res://zones/dialog_area.tscn" id="3_r2dap"]
+[ext_resource type="Texture2D" uid="uid://2rlwqtuhnem7" path="res://sprites/E.png" id="4_ylb1r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2dap"]
+atlas = ExtResource("2_q1khe")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvd8b"]
+atlas = ExtResource("2_q1khe")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl03l"]
+atlas = ExtResource("2_q1khe")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ppht7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2dap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvd8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sl03l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_la3ci"]
+size = Vector2(27, 115)
+
+[node name="Trader" type="StaticBody2D"]
+script = ExtResource("1_q1khe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ppht7")
+autoplay = "default"
+frame_progress = 0.2998672
+
+[node name="Area2D" parent="." instance=ExtResource("3_r2dap")]
+position = Vector2(-6, 41)
+scale = Vector2(4.2447186, -5.0335355)
+path = "res://dialoges/first_dialog.json"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7.5, 5.5)
+shape = SubResource("RectangleShape2D_la3ci")
+
+[node name="DialogSign" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-7, -78)
+scale = Vector2(2.2424989, 2.2424989)
+texture = ExtResource("4_ylb1r")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
+[connection signal="input_event" from="Area2D" to="Area2D" method="_on_input_event"]

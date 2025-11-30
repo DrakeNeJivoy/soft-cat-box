@@ -1,14 +1,16 @@
 extends Node
 
 var elements = []
-var unlock_elements = ["Fire","Wind","Light"]
+#var unlock_elements = ["Fire","Wind","Light"]
+var unlock_elements = []
+
 
 signal change_element
 signal unlock_new_element
 signal cng_ats
 signal cng_perk
 
-var battle_area = true
+var battle_area = false
 
 var attack_speed = 1
 
