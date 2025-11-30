@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://sff5dn44ussn"]
+[gd_scene load_steps=28 format=3 uid="uid://sff5dn44ussn"]
 
 [ext_resource type="Script" uid="uid://by0r6bqc51rii" path="res://scripts/enemy.gd" id="1_qaasr"]
 [ext_resource type="Texture2D" uid="uid://dnsu8d1llqtul" path="res://sprites/KazakhsThanos/Fist_SW-Sheet.png" id="2_l3m3e"]
 [ext_resource type="Texture2D" uid="uid://bued5kx7nla2e" path="res://sprites/KazakhsThanos/Walking_SW.png" id="3_jqv6w"]
 [ext_resource type="Texture2D" uid="uid://cn7vo7ncjyneg" path="res://sprites/KazakhsThanos/Fist_SE-Sheet.png" id="4_l3m3e"]
+[ext_resource type="Texture2D" uid="uid://byunga5g3ach" path="res://sprites/KazakhsThanos/LOSS_SE (1).png" id="5_i4yn8"]
 [ext_resource type="Texture2D" uid="uid://biok17ha68787" path="res://sprites/KazakhsThanos/Walking_SE.png" id="5_jqv6w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iy53l"]
@@ -50,6 +51,18 @@ region = Rect2(194, 0, 194, 164)
 atlas = ExtResource("4_l3m3e")
 region = Rect2(388, 0, 194, 164)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_prala"]
+atlas = ExtResource("5_i4yn8")
+region = Rect2(0, 0, 194, 164)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fw8y"]
+atlas = ExtResource("5_i4yn8")
+region = Rect2(194, 0, 194, 164)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cb0y7"]
+atlas = ExtResource("5_i4yn8")
+region = Rect2(388, 0, 194, 164)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_egygd"]
 atlas = ExtResource("4_l3m3e")
 region = Rect2(0, 0, 194, 164)
@@ -86,6 +99,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_prala")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fw8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cb0y7")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_egygd")
 }, {
 "duration": 1.0,
@@ -115,7 +142,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "method"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -131,6 +158,34 @@ tracks/1/keys = {
 }, {
 "args": [],
 "method": &"_end_attack"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_activate_hitbox"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.0666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_activate_hitbox"
 }]
 }
 
@@ -186,9 +241,10 @@ size = Vector2(187.57703, 164.38287)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqv6w"]
 size = Vector2(170.16795, 167.51923)
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 motion_mode = 1
 script = ExtResource("1_qaasr")
+hp = 150
 
 [node name="EnemySprite" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -212,11 +268,11 @@ position = Vector2(-1.6298147e-09, -113.00001)
 rotation = 0.00026583672
 scale = Vector2(1.7159104, 1.7159104)
 sprite_frames = SubResource("SpriteFrames_w71t2")
-animation = &"attack"
+animation = &"death"
 autoplay = "walking"
-frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AreaAttack"]
+root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_jqv6w")
 }
@@ -236,7 +292,6 @@ physics_interpolation_mode = 2
 position = Vector2(41.577934, -72.89938)
 scale = Vector2(0.99734026, 1)
 shape = SubResource("RectangleShape2D_wvd63")
-disabled = true
 
 [node name="HitBoxLeft" type="Area2D" parent="."]
 
@@ -247,3 +302,7 @@ shape = SubResource("RectangleShape2D_jqv6w")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
+
+[connection signal="animation_finished" from="AreaAttack/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="HitBoxRight" to="." method="_on_hit_box_right_body_entered"]
+[connection signal="body_entered" from="HitBoxLeft" to="." method="_on_hit_box_left_body_entered"]
