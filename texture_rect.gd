@@ -3,6 +3,7 @@ extends Control
 @onready var text_field = $Text
 @onready var name_field = $Name
 var player
+var parent
 
 var text_array
 var text_lenght
@@ -17,8 +18,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_open_dialog(text):
+func _on_open_dialog(text, node_parent):
 	text_array = text
+	parent = node_parent
 	text_lenght = len(text)
 	text_field.text = text_array[0].get("text")
 	name_field.text = text_array[0].get("name")
@@ -40,7 +42,7 @@ func _on_gui_input(event: InputEvent) -> void:
 				text_array = []
 				text_lenght = []
 				current = 1
-				GlobalSignal.emit_signal("dialog_end")
+				GlobalSignal.dialog_end.emit(parent)
 				return
 			text_field.text = text_array[current].get("text")
 			name_field.text = text_array[current].get("name")

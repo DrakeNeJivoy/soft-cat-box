@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2dwton4ywud5"]
+
+[ext_resource type="FontFile" uid="uid://r1iqx70molqn" path="res://sprites/Fonts/minecraft_0.ttf" id="1_fijnr"]
+[ext_resource type="Script" uid="uid://cudiogwiiakjf" path="res://scripts/tab_guide.gd" id="1_s15n6"]
+[ext_resource type="Texture2D" uid="uid://c1dyrhky0j5tg" path="res://sprites/TAB.png" id="2_s15n6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x45ti"]
+font = ExtResource("1_fijnr")
+font_size = 30
+
+[node name="TabGuide" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s15n6")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1291.0
+offset_bottom = 730.0
+
+[node name="Text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 107.0
+offset_right = 414.0
+offset_bottom = 152.0
+text = "Нажмите "
+label_settings = SubResource("LabelSettings_x45ti")
+
+[node name="Text2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 107.0
+offset_right = 994.0
+offset_bottom = 152.0
+text = "для открытия инвентаря"
+label_settings = SubResource("LabelSettings_x45ti")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 411.0
+offset_top = 86.0
+offset_right = 498.0
+offset_bottom = 173.0
+texture = ExtResource("2_s15n6")

@@ -149,7 +149,7 @@ func _physics_process(delta):
 func _on_dialog_started():
 	dialog_active = true
 	
-func _on_dialog_end():
+func _on_dialog_end(parent):
 	dialog_active = false
 
 func _change_element():

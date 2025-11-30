@@ -1,11 +1,12 @@
 extends Node
 
-signal open_dialog(text)
+signal open_dialog(text, parent)
 signal dialog_started
-signal dialog_end
+signal dialog_end(parent)
 signal take_dmg(amount: int)
 signal open_inventory
 signal hit(amount:int, body)
+signal tab_guide_open
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
