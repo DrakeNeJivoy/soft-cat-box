@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://c7eweixmsjhme"]
+[gd_scene load_steps=26 format=4 uid="uid://dtkx6141tsqsn"]
 
 [ext_resource type="Texture2D" uid="uid://dhcotg7ab7bxp" path="res://sprites/Tiles/Ecopunk_Airship_Interior_Map.png" id="1_esajj"]
 [ext_resource type="Texture2D" uid="uid://du8l0wpkj26cq" path="res://sprites/Tiles/Cyberpunk_Trader_Floor_Tileset.png" id="2_xmw25"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://entitys/robot_enemy.tscn" id="6_p2alb"]
 [ext_resource type="PackedScene" uid="uid://dnyrkg7g8lswe" path="res://scripts/main_char.tscn" id="7_yl2xj"]
 [ext_resource type="PackedScene" uid="uid://q7pehfvsq4w4" path="res://ui/camera_2d.tscn" id="8_hnwf0"]
+[ext_resource type="Script" uid="uid://412n06ei3p7m" path="res://scripts/camera_2d.gd" id="9_hnwf0"]
 [ext_resource type="PackedScene" uid="uid://cdhxnkh6cw7ic" path="res://entitys/game_over_panel.tscn" id="9_v3v6l"]
 [ext_resource type="Script" uid="uid://c4i7r4m4vnhwi" path="res://scripts/ui.gd" id="10_fi2om"]
 [ext_resource type="PackedScene" path="res://ui/Inventory.tscn" id="11_p8use"]
@@ -2763,21 +2764,25 @@ tile_set = SubResource("TileSet_p8use")
 [node name="RobotEnemy" parent="." instance=ExtResource("6_p2alb")]
 z_index = 5
 position = Vector2(1195, -414)
+wall_min_slide_angle = 0.43633232
 damage = 5
 
 [node name="RobotEnemy2" parent="." instance=ExtResource("6_p2alb")]
 z_index = 5
 position = Vector2(727, 4)
+wall_min_slide_angle = 0.43633232
 damage = 5
 
 [node name="RobotEnemy3" parent="." instance=ExtResource("6_p2alb")]
 z_index = 5
 position = Vector2(-423, -333)
+wall_min_slide_angle = 0.43633232
 damage = 5
 
 [node name="RobotEnemy4" parent="." instance=ExtResource("6_p2alb")]
 z_index = 5
 position = Vector2(-683, 147)
+wall_min_slide_angle = 0.43633232
 damage = 5
 
 [node name="MainChar" parent="." instance=ExtResource("7_yl2xj")]
@@ -2792,6 +2797,7 @@ limit_top = -850
 limit_right = 1800
 limit_bottom = 360
 limit_smoothed = true
+script = ExtResource("9_hnwf0")
 
 [node name="GameOverPanel" parent="MainChar/Camera2D" instance=ExtResource("9_v3v6l")]
 visible = false
