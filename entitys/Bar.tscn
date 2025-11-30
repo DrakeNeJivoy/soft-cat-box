@@ -1,10 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://bnsdjsuy55763"]
+[gd_scene load_steps=22 format=3 uid="uid://bnsdjsuy55763"]
 
 [ext_resource type="Texture2D" uid="uid://vnxujoshtwt0" path="res://sprites/Neon_Nightclub_Pixel_Tileset.png" id="1_bxg78"]
 [ext_resource type="Texture2D" uid="uid://cf3gs5c2efgps" path="res://sprites/Cyberpunk_Trader_Floor_Tileset.png" id="2_vqh65"]
 [ext_resource type="Texture2D" uid="uid://d3h5ta8f228ix" path="res://sprites/Cyber_Info_Shop_Tiles.png" id="3_1hggo"]
 [ext_resource type="Texture2D" uid="uid://c2f5t1d7evnev" path="res://sprites/Industrial_Freight_Elevator_Tileset.png" id="4_wel1r"]
 [ext_resource type="Texture2D" uid="uid://ck8gimqybp51r" path="res://sprites/Neon_Underground_Tileset_64x64.png" id="5_tye0t"]
+[ext_resource type="PackedScene" uid="uid://dnyrkg7g8lswe" path="res://scripts/main_char.tscn" id="6_c3ee5"]
+[ext_resource type="PackedScene" uid="uid://q7pehfvsq4w4" path="res://ui/camera_2d.tscn" id="7_3i51k"]
+[ext_resource type="Script" uid="uid://412n06ei3p7m" path="res://scripts/camera_2d.gd" id="8_itttu"]
+[ext_resource type="PackedScene" uid="uid://cdhxnkh6cw7ic" path="res://entitys/game_over_panel.tscn" id="9_r45pb"]
+[ext_resource type="Script" uid="uid://c4i7r4m4vnhwi" path="res://scripts/ui.gd" id="10_1th4h"]
+[ext_resource type="PackedScene" path="res://ui/Inventory.tscn" id="11_owluv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bxg78"]
 texture = ExtResource("1_bxg78")
@@ -5898,3 +5904,42 @@ shape = SubResource("WorldBoundaryShape2D_bxg78")
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1919.5, -503)
 shape = SubResource("RectangleShape2D_bxg78")
+
+[node name="MainChar" parent="." instance=ExtResource("6_c3ee5")]
+position = Vector2(150, -180)
+scale = Vector2(4, 4)
+
+[node name="Camera2D" parent="MainChar" instance=ExtResource("7_3i51k")]
+position = Vector2(0, -47.759644)
+zoom = Vector2(1, 1)
+limit_left = -710
+limit_top = -1590
+limit_right = 2200
+limit_bottom = 255
+limit_smoothed = true
+script = ExtResource("8_itttu")
+
+[node name="GameOverPanel" parent="MainChar/Camera2D" instance=ExtResource("9_r45pb")]
+visible = false
+
+[node name="UI" type="Control" parent="MainChar/Camera2D"]
+process_mode = 3
+z_index = 4096
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 0
+offset_top = 47.759644
+offset_right = 40.0
+offset_bottom = 87.75964
+scale = Vector2(0.25, 0.25)
+script = ExtResource("10_1th4h")
+metadata/_edit_use_anchors_ = true
+
+[node name="Inventory" parent="MainChar/Camera2D/UI" instance=ExtResource("11_owluv")]
+process_mode = 3
+visible = false
+layout_mode = 1
+offset_left = -634.0
+offset_top = -553.0
+offset_right = -634.0
+offset_bottom = -553.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cxxts37as4kgj"]
+[gd_scene load_steps=23 format=3 uid="uid://cxxts37as4kgj"]
 
 [ext_resource type="Texture2D" uid="uid://ceqeiao5w1tc0" path="res://sprites/Ecopunk_Airship_Pixel_Tileset (1).png" id="1_rljom"]
 [ext_resource type="Texture2D" uid="uid://bq0vwodj5p7p5" path="res://sprites/Ecopunk_Airship_Pixel_Tileset__1_-removebg-preview.png" id="2_lo1uv"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://c4i7r4m4vnhwi" path="res://scripts/ui.gd" id="9_f7k7w"]
 [ext_resource type="PackedScene" path="res://ui/Inventory.tscn" id="10_swhhr"]
 [ext_resource type="PackedScene" path="res://entitys/tab_guide.tscn" id="11_wgmpi"]
+[ext_resource type="PackedScene" path="res://entitys/airship_enemy.tscn" id="12_48v1x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_arsnx"]
 texture = ExtResource("1_rljom")
@@ -5688,6 +5689,10 @@ scale = Vector2(4, 4)
 [node name="Camera2D" parent="MainChar" instance=ExtResource("7_48v1x")]
 position = Vector2(0, -47.759644)
 zoom = Vector2(1, 1)
+limit_left = -2075
+limit_top = -1030
+limit_right = 1660
+limit_bottom = 575
 
 [node name="GameOverPanel" parent="MainChar/Camera2D" instance=ExtResource("8_thj2g")]
 visible = false
@@ -5721,3 +5726,11 @@ offset_left = -642.0
 offset_top = -556.0
 offset_right = -642.0
 offset_bottom = -556.0
+
+[node name="Airship_Enemy" parent="." instance=ExtResource("12_48v1x")]
+position = Vector2(970, 32)
+wall_min_slide_angle = 1.0471976
+
+[node name="Airship_Enemy2" parent="." instance=ExtResource("12_48v1x")]
+position = Vector2(-1141, 62)
+wall_min_slide_angle = 1.0471976

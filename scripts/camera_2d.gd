@@ -1,17 +1,12 @@
 extends Camera2D
 
-var shake_strength := 0.0
-var shake_decay := 5.0
-
-func shake(amount: float):
-	shake_strength = amount
+@export var shake_amount := 1.5      # сила тряски
+@export var shake_speed := 20.0      # скорость колебаний
+var time := 0.0
 
 func _process(delta):
-	if shake_strength > 0:
-		offset = Vector2(
-			randf_range(-shake_strength, shake_strength),
-			randf_range(-shake_strength, shake_strength)
-		)
-		shake_strength = max(shake_strength - shake_decay * delta, 0)
-	else:
-		offset = Vector2.ZERO	
+	time += delta * shake_speed
+	offset = Vector2(
+		sin(time * 1.3) * shake_amount,
+		cos(time * 1.7) * shake_amount
+	)

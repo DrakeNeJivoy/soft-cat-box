@@ -1,10 +1,16 @@
-[gd_scene load_steps=17 format=4 uid="uid://c3sgsyl8cm601"]
+[gd_scene load_steps=23 format=4 uid="uid://c3sgsyl8cm601"]
 
 [ext_resource type="Texture2D" uid="uid://dhcotg7ab7bxp" path="res://sprites/Tiles/Ecopunk_Airship_Interior_Map.png" id="1_s5nrx"]
 [ext_resource type="Texture2D" uid="uid://du8l0wpkj26cq" path="res://sprites/Tiles/Cyberpunk_Trader_Floor_Tileset.png" id="2_0uuik"]
 [ext_resource type="Texture2D" uid="uid://c2f5t1d7evnev" path="res://sprites/Industrial_Freight_Elevator_Tileset.png" id="3_h8qay"]
 [ext_resource type="Texture2D" uid="uid://crf5img3jdf11" path="res://sprites/Tiles/Cyber_Info_Shop_Tiles.png" id="4_gom63"]
 [ext_resource type="Texture2D" uid="uid://dbwetxio2wic6" path="res://sprites/Tiles/Cyber_Floor_Tileset_Blue_Grey.png" id="5_ahg3d"]
+[ext_resource type="PackedScene" uid="uid://dnyrkg7g8lswe" path="res://scripts/main_char.tscn" id="6_48ysk"]
+[ext_resource type="PackedScene" uid="uid://q7pehfvsq4w4" path="res://ui/camera_2d.tscn" id="7_1gubg"]
+[ext_resource type="Script" uid="uid://412n06ei3p7m" path="res://scripts/camera_2d.gd" id="8_bw2vu"]
+[ext_resource type="PackedScene" uid="uid://cdhxnkh6cw7ic" path="res://entitys/game_over_panel.tscn" id="9_2uh2i"]
+[ext_resource type="Script" uid="uid://c4i7r4m4vnhwi" path="res://scripts/ui.gd" id="10_kny4c"]
+[ext_resource type="PackedScene" path="res://ui/Inventory.tscn" id="11_x8srq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ya1d5"]
 texture = ExtResource("1_s5nrx")
@@ -2774,3 +2780,42 @@ position = Vector2(3723, -457.99997)
 rotation = -1.5707964
 scale = Vector2(11.771677, 11.771677)
 shape = SubResource("WorldBoundaryShape2D_s5nrx")
+
+[node name="MainChar" parent="." instance=ExtResource("6_48ysk")]
+position = Vector2(150, -180)
+scale = Vector2(4, 4)
+
+[node name="Camera2D" parent="MainChar" instance=ExtResource("7_1gubg")]
+position = Vector2(0, -47.759644)
+zoom = Vector2(1, 1)
+limit_left = -1600
+limit_top = -620
+limit_right = 1000
+limit_bottom = 360
+limit_smoothed = true
+script = ExtResource("8_bw2vu")
+
+[node name="GameOverPanel" parent="MainChar/Camera2D" instance=ExtResource("9_2uh2i")]
+visible = false
+
+[node name="UI" type="Control" parent="MainChar/Camera2D"]
+process_mode = 3
+z_index = 4096
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 0
+offset_top = 47.759644
+offset_right = 40.0
+offset_bottom = 87.75964
+scale = Vector2(0.25, 0.25)
+script = ExtResource("10_kny4c")
+metadata/_edit_use_anchors_ = true
+
+[node name="Inventory" parent="MainChar/Camera2D/UI" instance=ExtResource("11_x8srq")]
+process_mode = 3
+visible = false
+layout_mode = 1
+offset_left = -634.0
+offset_top = -553.0
+offset_right = -634.0
+offset_bottom = -553.0
