@@ -45,7 +45,7 @@ sprite_frames = SubResource("SpriteFrames_ppht7")
 autoplay = "default"
 frame_progress = 0.2998672
 
-[node name="Area2D" parent="." instance=ExtResource("3_r2dap")]
+[node name="TraderArea" parent="." instance=ExtResource("3_r2dap")]
 position = Vector2(-6, 41)
 scale = Vector2(4.2447186, -5.0335355)
 path = "res://dialoges/first_dialog.json"
@@ -60,6 +60,6 @@ position = Vector2(-7, -78)
 scale = Vector2(2.2424989, 2.2424989)
 texture = ExtResource("4_ylb1r")
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
-[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
-[connection signal="input_event" from="Area2D" to="Area2D" method="_on_input_event"]
+[connection signal="body_entered" from="TraderArea" to="TraderArea" method="_on_body_entered"]
+[connection signal="body_exited" from="TraderArea" to="TraderArea" method="_on_body_exited"]
+[connection signal="input_event" from="TraderArea" to="TraderArea" method="_on_input_event"]
