@@ -35,7 +35,7 @@ func _ready():
 	hitbox_right.connect("body_entered", Callable(self, "_on_hitbox_body_entered"))
 	hitbox_left.connect("body_entered", Callable(self, "_on_hitbox_body_entered"))
 	# Отключаем оба хитбокса по умолчанию
-	_disable_hitboxes()
+	deactivate_hitbox()
 
 
 func _physics_process(delta):
@@ -133,7 +133,7 @@ func _update_attack_direction():
 # --- ВЫКЛЮЧЕНИЕ АТАКИ ---
 func _end_attack():
 	is_attacking = false
-	_disable_hitboxes()
+	deactivate_hitbox()
 	timer.start(attack_cooldown)
 	area_attack.play("walking")
 
@@ -142,32 +142,13 @@ func _on_attack_cooldown_finished():
 	can_attack = true
 
 
-# --- ХИТБОКСЫ ---
-func _enable_hitbox_for_current_side():
-	if facing == 1:
-		hitbox_right_shape.disabled = false
-		hitbox_left_shape.disabled = false
-		hitbox_right.connect("body_entered", Callable(self, "_on_hitbox_body_entered"))
-	else:
-		hitbox_right_shape.disabled = false
-		hitbox_left_shape.disabled = false
-		hitbox_left.connect("body_entered", Callable(self, "_on_hitbox_body_entered"))
-
-
 func _disable_hitboxes():
 	hitbox_right_shape.disabled = true
 	hitbox_left_shape.disabled = true
-	
-	var right_callable = Callable(self, "_on_hitbox_body_entered")
-	var left_callable = Callable(self, "_on_hitbox_body_entered")
-	
-	if hitbox_right.is_connected("body_entered", right_callable):
-		hitbox_right.disconnect("body_entered", right_callable)
-	if hitbox_left.is_connected("body_entered", left_callable):
-		hitbox_left.disconnect("body_entered", left_callable)
 
 
 func _on_hitbox_body_entered(body):
+	print("Hitbox entered by: ", body.name)
 	if is_attacking and not already_hit and body.is_in_group("player"):
 		already_hit = true
 		GlobalSignal.take_dmg.emit(damage)
@@ -182,5 +163,5 @@ func activate_hitbox():
 		hitbox_left_shape.disabled = false
 	
 func deactivate_hitbox():
-	_disable_hitboxes()
-		
+	hitbox_right_shape.disabled = true
+	hitbox_left_shape.disabled = true
