@@ -2,6 +2,9 @@ extends Control
 
 @onready var text_field = $Text
 @onready var name_field = $Name
+@onready var zak_portret = $Control/Zak
+@onready var barman_portret = $Control/Barman
+@onready var trader_portret = $Control/Trader
 var player
 var parent
 
@@ -24,6 +27,18 @@ func _on_open_dialog(text, node_parent):
 	text_lenght = len(text)
 	text_field.text = text_array[0].get("text")
 	name_field.text = text_array[0].get("name")
+	if text_array[0].get("name") == "Зак":
+		zak_portret.visible = true
+		barman_portret.visible = false
+		trader_portret.visible = false
+	if text_array[0].get("name") == "Торговец":
+		zak_portret.visible = false
+		barman_portret.visible = false
+		trader_portret.visible = true
+	if text_array[0].get("name") == "Бармен":
+		zak_portret.visible = false
+		barman_portret.visible = true
+		trader_portret.visible = false
 	visible = true
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	GlobalSignal.emit_signal("dialog_started")
@@ -46,4 +61,16 @@ func _on_gui_input(event: InputEvent) -> void:
 				return
 			text_field.text = text_array[current].get("text")
 			name_field.text = text_array[current].get("name")
+			if text_array[current].get("name") == "Зак":
+				zak_portret.visible = true
+				barman_portret.visible = false
+				trader_portret.visible = false
+			if text_array[current].get("name") == "Торговец":
+				zak_portret.visible = false
+				barman_portret.visible = false
+				trader_portret.visible = true
+			if text_array[current].get("name") == "Бармен":
+				zak_portret.visible = false
+				barman_portret.visible = true
+				trader_portret.visible = false
 			current += 1

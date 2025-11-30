@@ -10,7 +10,7 @@ func _ready():
 	exit_button.connect("pressed", Callable(self, "_on_ExitButton_pressed"))
 
 func _on_StartButton_pressed():
-	get_tree().change_scene_to_file("res://levels/mainscene.tscn")
+	get_tree().change_scene_to_file("res://entitys/OriginLevel (1).tscn")
 
 func _on_OptionsButton_pressed():
 	get_tree().change_scene_to_file("res://entitys/options_menu.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://c3sgsyl8cm601"]
+[gd_scene load_steps=25 format=4 uid="uid://c3sgsyl8cm601"]
 
 [ext_resource type="Texture2D" uid="uid://dhcotg7ab7bxp" path="res://sprites/Tiles/Ecopunk_Airship_Interior_Map.png" id="1_s5nrx"]
 [ext_resource type="Texture2D" uid="uid://du8l0wpkj26cq" path="res://sprites/Tiles/Cyberpunk_Trader_Floor_Tileset.png" id="2_0uuik"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://c4i7r4m4vnhwi" path="res://scripts/ui.gd" id="10_kny4c"]
 [ext_resource type="PackedScene" uid="uid://cjbbaf0x34xin" path="res://ui/Inventory.tscn" id="11_x8srq"]
 [ext_resource type="PackedScene" uid="uid://dc3akx8dfoytm" path="res://npc/colbalight.tscn" id="12_1gubg"]
+[ext_resource type="PackedScene" uid="uid://dpxaql03l1k2a" path="res://npc/colbawind.tscn" id="13_bw2vu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ya1d5"]
 texture = ExtResource("1_s5nrx")
@@ -2825,3 +2826,7 @@ offset_bottom = -553.0
 [node name="Colba" parent="." instance=ExtResource("12_1gubg")]
 position = Vector2(-650, -103)
 scale = Vector2(8.405, 8.405)
+
+[node name="Colbawind" parent="." instance=ExtResource("13_bw2vu")]
+position = Vector2(-990.00006, -252)
+scale = Vector2(10, 10)

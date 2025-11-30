@@ -10,6 +10,8 @@ signal unlock_new_element
 signal cng_ats
 signal cng_perk
 
+var colbs = 0
+
 var battle_area = false
 
 var attack_speed = 1
@@ -35,7 +37,7 @@ func remove_element(element):
 	emit_signal("change_element")
 	
 func clear_elements():
-	elements.clear()
+	elements = []
 	print(elements)
 	
 func get_elements():
@@ -72,3 +74,9 @@ func get_butttle_area():
 func set_buttle_area(btl):
 	battle_area = btl
 	print(battle_area)
+
+func inc_colbs():
+	colbs += 1
+	
+func get_colbs():
+	return colbs

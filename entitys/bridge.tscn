@@ -1,15 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://blfr5maxx74yf"]
+[gd_scene load_steps=18 format=3 uid="uid://blfr5maxx74yf"]
 
 [ext_resource type="Texture2D" uid="uid://s50bua7okct8" path="res://sprites/Ecopunk_Tiles_Seamless_64x64.png" id="1_8m5tg"]
+[ext_resource type="Script" uid="uid://cksx4f7860cl" path="res://entitys/bridge.gd" id="1_c7oy7"]
 [ext_resource type="Texture2D" uid="uid://dr0kua1y2xups" path="res://sprites/Cyber_Floor_Tileset_Blue_Grey.png" id="2_37fy4"]
 [ext_resource type="AudioStream" uid="uid://cf1fxcoalqxkp" path="res://music/boss.mp3" id="3_s2k5j"]
 [ext_resource type="PackedScene" uid="uid://dnyrkg7g8lswe" path="res://scripts/main_char.tscn" id="4_xfx3a"]
 [ext_resource type="PackedScene" uid="uid://q7pehfvsq4w4" path="res://ui/camera_2d.tscn" id="5_ocgw2"]
-[ext_resource type="PackedScene" uid="uid://cdhxnkh6cw7ic" path="res://entitys/game_over_panel.tscn" id="6_c7oy7"]
+[ext_resource type="PackedScene" path="res://entitys/game_over_panel.tscn" id="6_c7oy7"]
 [ext_resource type="Script" uid="uid://c4i7r4m4vnhwi" path="res://scripts/ui.gd" id="7_uthrp"]
-[ext_resource type="PackedScene" path="res://ui/Inventory.tscn" id="8_mhomg"]
-[ext_resource type="PackedScene" path="res://entitys/tab_guide.tscn" id="9_nrijv"]
-[ext_resource type="PackedScene" path="res://entitys/boss_enemy.tscn" id="10_ocgw2"]
+[ext_resource type="PackedScene" uid="uid://cjbbaf0x34xin" path="res://ui/Inventory.tscn" id="8_mhomg"]
+[ext_resource type="PackedScene" uid="uid://c2dwton4ywud5" path="res://entitys/tab_guide.tscn" id="9_nrijv"]
+[ext_resource type="PackedScene" uid="uid://sff5dn44ussn" path="res://entitys/boss_enemy.tscn" id="10_ocgw2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3qdu3"]
 texture = ExtResource("1_8m5tg")
@@ -3110,6 +3111,7 @@ sources/0 = SubResource("TileSetAtlasSource_8m5tg")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ocgw2"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_c7oy7")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_s2k5j")

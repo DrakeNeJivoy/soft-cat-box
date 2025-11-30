@@ -4,6 +4,7 @@ var count_enemy
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GameManager.clear_elements()
 	GameManager.set_buttle_area(true)
 	print(GameManager.get_butttle_area())
 	count_enemy = 4
