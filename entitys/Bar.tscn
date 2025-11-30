@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bnsdjsuy55763"]
+[gd_scene load_steps=23 format=3 uid="uid://bnsdjsuy55763"]
 
 [ext_resource type="Texture2D" uid="uid://vnxujoshtwt0" path="res://sprites/Neon_Nightclub_Pixel_Tileset.png" id="1_bxg78"]
 [ext_resource type="Texture2D" uid="uid://cf3gs5c2efgps" path="res://sprites/Cyberpunk_Trader_Floor_Tileset.png" id="2_vqh65"]
@@ -8,9 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://dnyrkg7g8lswe" path="res://scripts/main_char.tscn" id="6_c3ee5"]
 [ext_resource type="PackedScene" uid="uid://q7pehfvsq4w4" path="res://ui/camera_2d.tscn" id="7_3i51k"]
 [ext_resource type="Script" uid="uid://412n06ei3p7m" path="res://scripts/camera_2d.gd" id="8_itttu"]
-[ext_resource type="PackedScene" uid="uid://cdhxnkh6cw7ic" path="res://entitys/game_over_panel.tscn" id="9_r45pb"]
+[ext_resource type="PackedScene" path="res://entitys/game_over_panel.tscn" id="9_r45pb"]
 [ext_resource type="Script" uid="uid://c4i7r4m4vnhwi" path="res://scripts/ui.gd" id="10_1th4h"]
-[ext_resource type="PackedScene" path="res://ui/Inventory.tscn" id="11_owluv"]
+[ext_resource type="PackedScene" uid="uid://cjbbaf0x34xin" path="res://ui/Inventory.tscn" id="11_owluv"]
+[ext_resource type="PackedScene" uid="uid://ch3140xpxiurw" path="res://npc/barman.tscn" id="12_3i51k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bxg78"]
 texture = ExtResource("1_bxg78")
@@ -5911,7 +5912,7 @@ scale = Vector2(4, 4)
 
 [node name="Camera2D" parent="MainChar" instance=ExtResource("7_3i51k")]
 position = Vector2(0, -47.759644)
-zoom = Vector2(1, 1)
+zoom = Vector2(0.59, 0.59)
 limit_left = -710
 limit_top = -1590
 limit_right = 2200
@@ -5943,3 +5944,7 @@ offset_left = -634.0
 offset_top = -553.0
 offset_right = -634.0
 offset_bottom = -553.0
+
+[node name="Barman2" parent="." instance=ExtResource("12_3i51k")]
+position = Vector2(-355, -974)
+scale = Vector2(3, 3)

@@ -14,6 +14,8 @@ var queued_attack := false     # игрок нажал кнопку повтор
 var combo_timer := 0.0
 var combo_window := 0.1   # 0.1 секунды на нажатие повторно
 
+var check_buttle = true
+
 var postfix = ""
 
 var battle_area = false
@@ -44,6 +46,7 @@ func _ready() -> void:
 	battle_area = GameManager.get_butttle_area()
 	$Slashes.scale.x = -1
 	animated_sprite_2d.animation_finished.connect(_on_attack_animation_finished)
+	print("lol")
 	
 func _on_take_damage(amount: int) -> void:
 	current_health -= amount
@@ -69,6 +72,11 @@ func _physics_process(delta):
 		# Игрок заморожен, выходим из обработки ввода
 		velocity = Vector2.ZERO
 		return
+	
+	if check_buttle:
+		battle_area = GameManager.get_butttle_area()
+		if battle_area:
+			check_buttle=false
 	
 	if battle_area:
 		# Кулдаун между атаками

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://dtkx6141tsqsn"]
+[gd_scene load_steps=27 format=4 uid="uid://dtkx6141tsqsn"]
 
 [ext_resource type="Texture2D" uid="uid://dhcotg7ab7bxp" path="res://sprites/Tiles/Ecopunk_Airship_Interior_Map.png" id="1_esajj"]
 [ext_resource type="Script" uid="uid://dwmpyfb4hv6ra" path="res://scripts/level_elevator.gd" id="1_hnwf0"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dnyrkg7g8lswe" path="res://scripts/main_char.tscn" id="7_yl2xj"]
 [ext_resource type="PackedScene" uid="uid://q7pehfvsq4w4" path="res://ui/camera_2d.tscn" id="8_hnwf0"]
 [ext_resource type="Script" uid="uid://412n06ei3p7m" path="res://scripts/camera_2d.gd" id="9_hnwf0"]
-[ext_resource type="PackedScene" uid="uid://cdhxnkh6cw7ic" path="res://entitys/game_over_panel.tscn" id="9_v3v6l"]
+[ext_resource type="PackedScene" path="res://entitys/game_over_panel.tscn" id="9_v3v6l"]
 [ext_resource type="Script" uid="uid://c4i7r4m4vnhwi" path="res://scripts/ui.gd" id="10_fi2om"]
 [ext_resource type="PackedScene" uid="uid://cjbbaf0x34xin" path="res://ui/Inventory.tscn" id="11_p8use"]
 

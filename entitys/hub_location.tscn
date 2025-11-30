@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://c3sgsyl8cm601"]
+[gd_scene load_steps=24 format=4 uid="uid://c3sgsyl8cm601"]
 
 [ext_resource type="Texture2D" uid="uid://dhcotg7ab7bxp" path="res://sprites/Tiles/Ecopunk_Airship_Interior_Map.png" id="1_s5nrx"]
 [ext_resource type="Texture2D" uid="uid://du8l0wpkj26cq" path="res://sprites/Tiles/Cyberpunk_Trader_Floor_Tileset.png" id="2_0uuik"]
@@ -8,9 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://dnyrkg7g8lswe" path="res://scripts/main_char.tscn" id="6_48ysk"]
 [ext_resource type="PackedScene" uid="uid://q7pehfvsq4w4" path="res://ui/camera_2d.tscn" id="7_1gubg"]
 [ext_resource type="Script" uid="uid://412n06ei3p7m" path="res://scripts/camera_2d.gd" id="8_bw2vu"]
-[ext_resource type="PackedScene" uid="uid://cdhxnkh6cw7ic" path="res://entitys/game_over_panel.tscn" id="9_2uh2i"]
+[ext_resource type="PackedScene" path="res://entitys/game_over_panel.tscn" id="9_2uh2i"]
 [ext_resource type="Script" uid="uid://c4i7r4m4vnhwi" path="res://scripts/ui.gd" id="10_kny4c"]
-[ext_resource type="PackedScene" path="res://ui/Inventory.tscn" id="11_x8srq"]
+[ext_resource type="PackedScene" uid="uid://cjbbaf0x34xin" path="res://ui/Inventory.tscn" id="11_x8srq"]
+[ext_resource type="PackedScene" uid="uid://dc3akx8dfoytm" path="res://npc/colbalight.tscn" id="12_1gubg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ya1d5"]
 texture = ExtResource("1_s5nrx")
@@ -2738,6 +2739,7 @@ sources/1 = SubResource("TileSetAtlasSource_3jvww")
 [node name="HubLocation" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+z_index = -10
 position = Vector2(88, -85.99999)
 scale = Vector2(1, 0.99999994)
 skew = 0.7853982
@@ -2751,7 +2753,7 @@ layer_1/z_index = 1
 layer_2/name = "Layer0"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-z_index = 10
+z_index = -20
 tile_map_data = PackedByteArray("AAD7/wUAAQBrAC4AAFAAAAUAAQBrAC4AAFAFAAUAAQBrAC4AAFAKAAUAAQBrAC4AAFAPAAUAAQBrAC4AAFAPAAAAAQBrAC4AADAPAPv/AQBrAC4AADD2/wUAAQBrAC4AAFDx/wUAAQBrAC4AAFDs/wUAAQBrAC4AAFDn/wUAAQBrAC4AAFAPAPb/AQBrAC4AAFAKAPb/AQBrAC4AAFAFAPb/AQBrAC4AAFAAAPb/AQBrAC4AAFD7//b/AQBrAC4AAFD2//b/AQBrAC4AAFDx//b/AQBrAC4AAFDs//b/AQBrAC4AAFDn//b/AQBrAC4AAFDn//v/AQBrAC4AAADn/wAAAQBrAC4AAAA=")
 tile_set = SubResource("TileSet_m4o6s")
 
@@ -2819,3 +2821,7 @@ offset_left = -634.0
 offset_top = -553.0
 offset_right = -634.0
 offset_bottom = -553.0
+
+[node name="Colba" parent="." instance=ExtResource("12_1gubg")]
+position = Vector2(-650, -103)
+scale = Vector2(8.405, 8.405)
