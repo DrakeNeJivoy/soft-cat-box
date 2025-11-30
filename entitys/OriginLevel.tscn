@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://vypk02h4f47o"]
+[gd_scene load_steps=15 format=3 uid="uid://erq543w80c4y"]
 
 [ext_resource type="Texture2D" uid="uid://cf3gs5c2efgps" path="res://sprites/Cyberpunk_Trader_Floor_Tileset.png" id="1_2j0ge"]
 [ext_resource type="Texture2D" uid="uid://d3h5ta8f228ix" path="res://sprites/Cyber_Info_Shop_Tiles.png" id="2_satqe"]
@@ -6,13 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://c2f5t1d7evnev" path="res://sprites/Industrial_Freight_Elevator_Tileset.png" id="3_satqe"]
 [ext_resource type="Texture2D" uid="uid://dr0kua1y2xups" path="res://sprites/Cyber_Floor_Tileset_Blue_Grey.png" id="4_5kxtk"]
 [ext_resource type="PackedScene" uid="uid://q4dgyq0nc37l" path="res://npc/trader.tscn" id="4_dx0br"]
+[ext_resource type="AudioStream" uid="uid://3j7vkj3j0txl" path="res://music/Embience 1.mp3" id="6_2obpr"]
 [ext_resource type="PackedScene" uid="uid://dnyrkg7g8lswe" path="res://scripts/main_char.tscn" id="6_dx0br"]
 [ext_resource type="PackedScene" uid="uid://q7pehfvsq4w4" path="res://ui/camera_2d.tscn" id="7_pdjyy"]
 [ext_resource type="PackedScene" path="res://entitys/game_over_panel.tscn" id="9_pudsv"]
 [ext_resource type="Script" uid="uid://c4i7r4m4vnhwi" path="res://scripts/ui.gd" id="10_61bh7"]
 [ext_resource type="PackedScene" uid="uid://cjbbaf0x34xin" path="res://ui/Inventory.tscn" id="11_8s8rn"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2obpr"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5kxtk"]
 texture = ExtResource("1_2j0ge")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -667,7 +668,7 @@ texture_region_size = Vector2i(64, 64)
 29:20/0 = 0
 30:20/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5kxtk"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxf4r"]
 texture = ExtResource("2_satqe")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -1695,7 +1696,7 @@ texture_region_size = Vector2i(64, 64)
 30:31/0 = 0
 31:31/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxf4r"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g22tw"]
 texture = ExtResource("3_satqe")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -2726,11 +2727,11 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_00cjr"]
 tile_shape = 1
 tile_size = Vector2i(64, 64)
-sources/3 = SubResource("TileSetAtlasSource_2obpr")
-sources/4 = SubResource("TileSetAtlasSource_5kxtk")
-sources/5 = SubResource("TileSetAtlasSource_sxf4r")
+sources/3 = SubResource("TileSetAtlasSource_5kxtk")
+sources/4 = SubResource("TileSetAtlasSource_sxf4r")
+sources/5 = SubResource("TileSetAtlasSource_g22tw")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g22tw"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dvuv6"]
 texture = ExtResource("3_2obpr")
 margins = Vector2i(6, 8)
 separation = Vector2i(4, 0)
@@ -3760,7 +3761,7 @@ texture_region_size = Vector2i(64, 64)
 30:31/0 = 0
 31:31/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dvuv6"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dx0br"]
 texture = ExtResource("4_5kxtk")
 margins = Vector2i(4, 7)
 texture_region_size = Vector2i(64, 64)
@@ -4789,7 +4790,7 @@ texture_region_size = Vector2i(64, 64)
 30:31/0 = 0
 31:31/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dx0br"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pdjyy"]
 texture = ExtResource("2_satqe")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -5819,10 +5820,11 @@ texture_region_size = Vector2i(64, 64)
 
 [sub_resource type="TileSet" id="TileSet_ct6gi"]
 tile_size = Vector2i(64, 64)
-sources/1 = SubResource("TileSetAtlasSource_g22tw")
-sources/2 = SubResource("TileSetAtlasSource_dvuv6")
-sources/4 = SubResource("TileSetAtlasSource_dx0br")
+sources/1 = SubResource("TileSetAtlasSource_dvuv6")
+sources/2 = SubResource("TileSetAtlasSource_dx0br")
+sources/4 = SubResource("TileSetAtlasSource_pdjyy")
 
+[node name="Node2D2" type="Node2D"]
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_satqe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_satqe"]
@@ -5918,3 +5920,8 @@ offset_left = -634.0
 offset_top = -553.0
 offset_right = -634.0
 offset_bottom = -553.0
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_2obpr")
+volume_db = -18.129
+autoplay = true
+playback_type = 1

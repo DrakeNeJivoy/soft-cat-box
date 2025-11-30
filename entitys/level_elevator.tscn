@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" path="res://entitys/game_over_panel.tscn" id="9_v3v6l"]
 [ext_resource type="Script" uid="uid://c4i7r4m4vnhwi" path="res://scripts/ui.gd" id="10_fi2om"]
 [ext_resource type="PackedScene" uid="uid://cjbbaf0x34xin" path="res://ui/Inventory.tscn" id="11_p8use"]
+[ext_resource type="AudioStream" uid="uid://ccaafg65j2fmf" path="res://music/minions.mp3" id="12_hnwf0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hnwf0"]
 texture = ExtResource("1_esajj")
@@ -2865,3 +2866,8 @@ shape = SubResource("RectangleShape2D_yl2xj")
 z_index = 50
 position = Vector2(3170, -640)
 shape = SubResource("RectangleShape2D_hnwf0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_hnwf0")
+volume_db = -25.761
+autoplay = true
