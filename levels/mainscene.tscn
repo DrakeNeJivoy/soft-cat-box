@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cjfbxga87a0ks"]
+[gd_scene load_steps=25 format=3 uid="uid://cjfbxga87a0ks"]
 
 [ext_resource type="Texture2D" uid="uid://c2f5t1d7evnev" path="res://sprites/Industrial_Freight_Elevator_Tileset.png" id="1_falil"]
 [ext_resource type="Texture2D" uid="uid://dqhwf6g4fj5vk" path="res://sprites/preview.jpg" id="1_m8ro5"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://ch3140xpxiurw" path="res://npc/barman.tscn" id="14_5mgul"]
 [ext_resource type="PackedScene" uid="uid://dc3akx8dfoytm" path="res://npc/colbalight.tscn" id="16_6fswi"]
 [ext_resource type="PackedScene" uid="uid://dpxaql03l1k2a" path="res://npc/colbawind.tscn" id="17_snng2"]
+[ext_resource type="PackedScene" uid="uid://dnuqdxfx04f8k" path="res://npc/door.tscn" id="19_orwxu"]
 
 [sub_resource type="GDScript" id="GDScript_cqxiv"]
 script/source = "extends StaticBody2D
@@ -146,3 +147,7 @@ scale = Vector2(6, 6)
 [node name="Colbawind" parent="." instance=ExtResource("17_snng2")]
 position = Vector2(117, 259)
 scale = Vector2(6, 6)
+
+[node name="Door" parent="." instance=ExtResource("19_orwxu")]
+position = Vector2(896, -253)
+scale = Vector2(7.760001, 7.760001)

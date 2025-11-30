@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnuqdxfx04f8k"]
+
+[ext_resource type="Script" uid="uid://dkw8noxf810wy" path="res://scripts/door.gd" id="1_ul1je"]
+[ext_resource type="Texture2D" uid="uid://cfca5f48qpb3j" path="res://sprites/DONEpng.png" id="2_ul1je"]
+[ext_resource type="PackedScene" uid="uid://bxkdnxs4mcx4r" path="res://zones/door_area.tscn" id="4_al2lu"]
+[ext_resource type="Texture2D" uid="uid://cw1muy7e5qqrr" path="res://sprites/PING.png" id="4_f5dc2"]
+
+[node name="Door" type="StaticBody2D"]
+script = ExtResource("1_ul1je")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ul1je")
+
+[node name="DialogSign" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -14)
+scale = Vector2(0.5625, 0.5625)
+texture = ExtResource("4_f5dc2")
+
+[node name="Area2D2" parent="." instance=ExtResource("4_al2lu")]
+
+[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D2" to="Area2D2" method="_on_body_exited"]
+[connection signal="input_event" from="Area2D2" to="Area2D2" method="_on_input_event"]

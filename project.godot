@@ -19,6 +19,12 @@ config/icon="res://icon.svg"
 
 GlobalSignal="*res://scripts/GlobalScripts/GlobalSignal.gd"
 GameManager="*res://scripts/GlobalScripts/GameManager.gd"
+AirShipHubManager="*res://scripts/GlobalScripts/AirShipHubManager.gd"
+AirShipManager="*res://scripts/GlobalScripts/AirShipManager.gd"
+BarManager="*res://scripts/GlobalScripts/BarManager.gd"
+BossLevelManager="*res://scripts/GlobalScripts/BossLevelManager.gd"
+ElevatorManager="*res://scripts/GlobalScripts/ElevatorManager.gd"
+SourceManager="*res://scripts/GlobalScripts/SourceManager.gd"
 
 [display]
 

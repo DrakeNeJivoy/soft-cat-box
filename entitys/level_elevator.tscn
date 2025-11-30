@@ -1,17 +1,18 @@
 [gd_scene load_steps=26 format=4 uid="uid://dtkx6141tsqsn"]
 
 [ext_resource type="Texture2D" uid="uid://dhcotg7ab7bxp" path="res://sprites/Tiles/Ecopunk_Airship_Interior_Map.png" id="1_esajj"]
+[ext_resource type="Script" uid="uid://dwmpyfb4hv6ra" path="res://scripts/level_elevator.gd" id="1_hnwf0"]
 [ext_resource type="Texture2D" uid="uid://du8l0wpkj26cq" path="res://sprites/Tiles/Cyberpunk_Trader_Floor_Tileset.png" id="2_xmw25"]
 [ext_resource type="Texture2D" uid="uid://c2f5t1d7evnev" path="res://sprites/Industrial_Freight_Elevator_Tileset.png" id="3_p2alb"]
 [ext_resource type="Texture2D" uid="uid://crf5img3jdf11" path="res://sprites/Tiles/Cyber_Info_Shop_Tiles.png" id="4_73soe"]
 [ext_resource type="Texture2D" uid="uid://dbwetxio2wic6" path="res://sprites/Tiles/Cyber_Floor_Tileset_Blue_Grey.png" id="5_xmw25"]
-[ext_resource type="PackedScene" path="res://entitys/robot_enemy.tscn" id="6_p2alb"]
+[ext_resource type="PackedScene" uid="uid://b20vhy1p6xhk7" path="res://entitys/robot_enemy.tscn" id="6_p2alb"]
 [ext_resource type="PackedScene" uid="uid://dnyrkg7g8lswe" path="res://scripts/main_char.tscn" id="7_yl2xj"]
 [ext_resource type="PackedScene" uid="uid://q7pehfvsq4w4" path="res://ui/camera_2d.tscn" id="8_hnwf0"]
 [ext_resource type="Script" uid="uid://412n06ei3p7m" path="res://scripts/camera_2d.gd" id="9_hnwf0"]
 [ext_resource type="PackedScene" uid="uid://cdhxnkh6cw7ic" path="res://entitys/game_over_panel.tscn" id="9_v3v6l"]
 [ext_resource type="Script" uid="uid://c4i7r4m4vnhwi" path="res://scripts/ui.gd" id="10_fi2om"]
-[ext_resource type="PackedScene" path="res://ui/Inventory.tscn" id="11_p8use"]
+[ext_resource type="PackedScene" uid="uid://cjbbaf0x34xin" path="res://ui/Inventory.tscn" id="11_p8use"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hnwf0"]
 texture = ExtResource("1_esajj")
@@ -2740,6 +2741,7 @@ size = Vector2(359, 276)
 size = Vector2(356, 280)
 
 [node name="LevelElevator" type="Node2D"]
+script = ExtResource("1_hnwf0")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(88, -85.99999)
