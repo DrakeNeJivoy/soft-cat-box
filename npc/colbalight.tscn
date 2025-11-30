@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://rs4w2npcfhqe" path="res://npc/colbalight.gd" id="1_5sv48"]
 [ext_resource type="Texture2D" uid="uid://bbck521gjyibg" path="res://sprites/light.png" id="2_5sv48"]
-[ext_resource type="PackedScene" uid="uid://dmredt2im7vvl" path="res://zones/dialog_area.tscn" id="3_0y3mq"]
+[ext_resource type="PackedScene" uid="uid://bku4wbd4cinif" path="res://zones/colba1.tscn" id="4_5sv48"]
 [ext_resource type="Texture2D" uid="uid://cw1muy7e5qqrr" path="res://sprites/PING.png" id="4_qfyt1"]
 
 [node name="Colba" type="StaticBody2D"]
@@ -13,15 +13,14 @@ rotation = 0.8158571
 scale = Vector2(0.039999843, 0.039999843)
 texture = ExtResource("2_5sv48")
 
-[node name="Area2D" parent="." instance=ExtResource("3_0y3mq")]
-path = "res://dialoges/colba1.json"
-
 [node name="DialogSign" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(0, -14)
 scale = Vector2(0.5625, 0.5625)
 texture = ExtResource("4_qfyt1")
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
-[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
-[connection signal="input_event" from="Area2D" to="Area2D" method="_on_input_event"]
+[node name="dialog" parent="." instance=ExtResource("4_5sv48")]
+
+[connection signal="body_entered" from="dialog" to="dialog" method="_on_body_entered"]
+[connection signal="body_exited" from="dialog" to="dialog" method="_on_body_exited"]
+[connection signal="input_event" from="dialog" to="dialog" method="_on_input_event"]

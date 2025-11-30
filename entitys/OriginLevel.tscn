@@ -6,6 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://c2f5t1d7evnev" path="res://sprites/Industrial_Freight_Elevator_Tileset.png" id="3_satqe"]
 [ext_resource type="Texture2D" uid="uid://dr0kua1y2xups" path="res://sprites/Cyber_Floor_Tileset_Blue_Grey.png" id="4_5kxtk"]
 [ext_resource type="AudioStream" uid="uid://3j7vkj3j0txl" path="res://music/Embience 1.mp3" id="6_2obpr"]
+[ext_resource type="PackedScene" uid="uid://dnyrkg7g8lswe" path="res://scripts/main_char.tscn" id="6_dx0br"]
+[ext_resource type="PackedScene" uid="uid://q7pehfvsq4w4" path="res://ui/camera_2d.tscn" id="7_pdjyy"]
+[ext_resource type="Script" uid="uid://412n06ei3p7m" path="res://scripts/camera_2d.gd" id="8_g4dlw"]
+[ext_resource type="PackedScene" uid="uid://cdhxnkh6cw7ic" path="res://entitys/game_over_panel.tscn" id="9_pudsv"]
+[ext_resource type="Script" uid="uid://c4i7r4m4vnhwi" path="res://scripts/ui.gd" id="10_61bh7"]
+[ext_resource type="PackedScene" path="res://ui/Inventory.tscn" id="11_8s8rn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5kxtk"]
 texture = ExtResource("1_2j0ge")
@@ -5819,6 +5825,12 @@ sources/2 = SubResource("TileSetAtlasSource_dx0br")
 sources/4 = SubResource("TileSetAtlasSource_pdjyy")
 
 [node name="Node2D2" type="Node2D"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_satqe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_satqe"]
+size = Vector2(210.57687, 77.706795)
+
+[node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(0, -1.9999999)

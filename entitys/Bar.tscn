@@ -6,6 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://c2f5t1d7evnev" path="res://sprites/Industrial_Freight_Elevator_Tileset.png" id="4_wel1r"]
 [ext_resource type="Texture2D" uid="uid://ck8gimqybp51r" path="res://sprites/Neon_Underground_Tileset_64x64.png" id="5_tye0t"]
 [ext_resource type="AudioStream" uid="uid://i26wlogxmd8d" path="res://music/Embi2.mp3" id="6_vqh65"]
+[ext_resource type="PackedScene" uid="uid://dnyrkg7g8lswe" path="res://scripts/main_char.tscn" id="6_c3ee5"]
+[ext_resource type="PackedScene" uid="uid://q7pehfvsq4w4" path="res://ui/camera_2d.tscn" id="7_3i51k"]
+[ext_resource type="Script" uid="uid://412n06ei3p7m" path="res://scripts/camera_2d.gd" id="8_itttu"]
+[ext_resource type="PackedScene" uid="uid://cdhxnkh6cw7ic" path="res://entitys/game_over_panel.tscn" id="9_r45pb"]
+[ext_resource type="Script" uid="uid://c4i7r4m4vnhwi" path="res://scripts/ui.gd" id="10_1th4h"]
+[ext_resource type="PackedScene" path="res://ui/Inventory.tscn" id="11_owluv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bxg78"]
 texture = ExtResource("1_bxg78")
@@ -5846,6 +5852,11 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_tye0t")
 sources/1 = SubResource("TileSetAtlasSource_q3rvp")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bxg78"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxg78"]
+size = Vector2(1011, 632)
 
 [node name="Node2D" type="Node2D"]
 
