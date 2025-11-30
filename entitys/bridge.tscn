@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bucbxj8tnrm6l"]
+[gd_scene load_steps=17 format=3 uid="uid://blfr5maxx74yf"]
 
 [ext_resource type="Texture2D" uid="uid://s50bua7okct8" path="res://sprites/Ecopunk_Tiles_Seamless_64x64.png" id="1_8m5tg"]
 [ext_resource type="Texture2D" uid="uid://dr0kua1y2xups" path="res://sprites/Cyber_Floor_Tileset_Blue_Grey.png" id="2_37fy4"]
@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://q7pehfvsq4w4" path="res://ui/camera_2d.tscn" id="5_ocgw2"]
 [ext_resource type="PackedScene" uid="uid://cdhxnkh6cw7ic" path="res://entitys/game_over_panel.tscn" id="6_c7oy7"]
 [ext_resource type="Script" uid="uid://c4i7r4m4vnhwi" path="res://scripts/ui.gd" id="7_uthrp"]
-[ext_resource type="PackedScene" uid="uid://cjbbaf0x34xin" path="res://ui/Inventory.tscn" id="8_mhomg"]
+[ext_resource type="PackedScene" path="res://ui/Inventory.tscn" id="8_mhomg"]
 [ext_resource type="PackedScene" path="res://entitys/tab_guide.tscn" id="9_nrijv"]
+[ext_resource type="PackedScene" path="res://entitys/boss_enemy.tscn" id="10_ocgw2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3qdu3"]
 texture = ExtResource("1_8m5tg")
@@ -3106,6 +3107,8 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_8m5tg")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ocgw2"]
+
 [node name="Node2D" type="Node2D"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -3114,6 +3117,7 @@ volume_db = -19.083
 autoplay = true
 
 [node name="TileMap2" type="TileMap" parent="."]
+scale = Vector2(3.2824757, 0.42831722)
 skew = -0.06283188
 tile_set = SubResource("TileSet_xfx3a")
 rendering_quadrant_size = 32
@@ -3135,6 +3139,10 @@ scale = Vector2(4, 4)
 [node name="Camera2D" parent="MainChar" instance=ExtResource("5_ocgw2")]
 position = Vector2(0, -47.759644)
 zoom = Vector2(1, 1)
+limit_left = -2450
+limit_top = -660
+limit_right = 2420
+limit_bottom = 510
 
 [node name="GameOverPanel" parent="MainChar/Camera2D" instance=ExtResource("6_c7oy7")]
 visible = false
@@ -3168,3 +3176,33 @@ offset_left = -642.0
 offset_top = -556.0
 offset_right = -642.0
 offset_bottom = -556.0
+
+[node name="Enemy" parent="." instance=ExtResource("10_ocgw2")]
+position = Vector2(1462, 92)
+scale = Vector2(1.6121114, 1.6121114)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-1353, 1384)
+
+[node name="BotBorder" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1195, -915)
+scale = Vector2(20.7327, 20.7327)
+shape = SubResource("WorldBoundaryShape2D_ocgw2")
+
+[node name="TopBorder" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1154, -1917)
+rotation = 3.1415927
+scale = Vector2(20.7327, 20.7327)
+shape = SubResource("WorldBoundaryShape2D_ocgw2")
+
+[node name="LeftBorder" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-798, -1383)
+rotation = 1.5707964
+scale = Vector2(20.7327, 20.7327)
+shape = SubResource("WorldBoundaryShape2D_ocgw2")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3721, -1403)
+rotation = -1.5707964
+scale = Vector2(20.7327, 20.7327)
+shape = SubResource("WorldBoundaryShape2D_ocgw2")
