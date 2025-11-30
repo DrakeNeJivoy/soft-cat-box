@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cjfbxga87a0ks"]
+[gd_scene load_steps=24 format=3 uid="uid://cjfbxga87a0ks"]
 
 [ext_resource type="Texture2D" uid="uid://c2f5t1d7evnev" path="res://sprites/Industrial_Freight_Elevator_Tileset.png" id="1_falil"]
 [ext_resource type="Texture2D" uid="uid://dqhwf6g4fj5vk" path="res://sprites/preview.jpg" id="1_m8ro5"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://s50bua7okct8" path="res://sprites/Ecopunk_Tiles_Seamless_64x64.png" id="4_5mgul"]
 [ext_resource type="PackedScene" uid="uid://q7pehfvsq4w4" path="res://ui/camera_2d.tscn" id="5_cqxiv"]
 [ext_resource type="PackedScene" uid="uid://ckm7ixosi11en" path="res://npc/dialoger.tscn" id="5_mkths"]
-[ext_resource type="PackedScene" uid="uid://d3abulrknt06c" path="res://entitys/take_damage.tscn" id="7_p1p0v"]
+[ext_resource type="PackedScene" path="res://entitys/take_damage.tscn" id="7_p1p0v"]
 [ext_resource type="Texture2D" uid="uid://dtflw26yow58i" path="res://icon.svg" id="8_cerdn"]
 [ext_resource type="PackedScene" path="res://entitys/game_over_panel.tscn" id="9_tlwtn"]
 [ext_resource type="PackedScene" uid="uid://c2dwton4ywud5" path="res://entitys/tab_guide.tscn" id="10_a5yuu"]

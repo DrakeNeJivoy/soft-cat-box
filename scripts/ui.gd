@@ -2,7 +2,7 @@ extends Control
 
 @onready var inventory_visible: bool = false
 @onready var inventory := $Inventory
-@onready var tab_guide := $TabGuide
+@onready var tab_guide: Node = get_node_or_null("TabGuide")
 
 var first_time = true
 
@@ -31,8 +31,9 @@ func close_inventory() -> void:
 	# Опционально: Input.mouse_mode = Input.MOUSE_MODE_CAPTURED  // Скрыть курсор для FPS/третьего лица
 	
 func _input(event: InputEvent) -> void:
-	if tab_guide.visible and event.is_action_pressed("open_inventory"):
-		tab_guide.visible = false
+	if tab_guide:
+		if tab_guide.visible and event.is_action_pressed("open_inventory"):
+			tab_guide.visible = false
 	if event.is_action_pressed("open_inventory"):  # Настройте в Project Settings > Input Map
 		if not inventory_visible:
 			open_inventory()
