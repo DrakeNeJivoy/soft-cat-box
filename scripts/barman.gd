@@ -20,3 +20,4 @@ func _event(parent):
 	if parent == self:
 		GameManager.add_unlock_element("Fire")
 		GlobalSignal.emit_signal("tab_guide_open")
+		get_tree().change_scene_to_file("res://entitys/level_elevator.tscn")

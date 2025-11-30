@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://q4dgyq0nc37l"]
+[gd_scene load_steps=11 format=3 uid="uid://q4dgyq0nc37l"]
 
 [ext_resource type="Script" uid="uid://dwj46ebqy6d1d" path="res://dialoger.gd" id="1_q1khe"]
 [ext_resource type="Texture2D" uid="uid://bejy0vrvnyrr1" path="res://sprites/TRADER_IDLE.png" id="2_q1khe"]
 [ext_resource type="PackedScene" uid="uid://dmredt2im7vvl" path="res://zones/dialog_area.tscn" id="3_r2dap"]
+[ext_resource type="Script" uid="uid://e4hayt2w8us1" path="res://zones/trader.gd" id="4_r2dap"]
 [ext_resource type="Texture2D" uid="uid://2rlwqtuhnem7" path="res://sprites/E.png" id="4_ylb1r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r2dap"]
@@ -47,7 +48,8 @@ frame_progress = 0.2998672
 
 [node name="TraderArea" parent="." instance=ExtResource("3_r2dap")]
 position = Vector2(-6, 41)
-scale = Vector2(4.2447186, -5.0335355)
+scale = Vector2(10.147734, -12.033537)
+script = ExtResource("4_r2dap")
 path = "res://dialoges/first_dialog.json"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -56,6 +58,7 @@ shape = SubResource("RectangleShape2D_la3ci")
 
 [node name="DialogSign" type="Sprite2D" parent="."]
 visible = false
+z_index = 100
 position = Vector2(-7, -78)
 scale = Vector2(2.2424989, 2.2424989)
 texture = ExtResource("4_ylb1r")

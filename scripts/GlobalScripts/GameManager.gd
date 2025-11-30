@@ -68,3 +68,7 @@ func set_perk_fire_dash(perk):
 	
 func get_butttle_area():
 	return battle_area
+	
+func set_buttle_area(btl):
+	battle_area = btl
+	print(battle_area)

@@ -199,6 +199,7 @@ func _hitted(dmg, body):
 		if current_hp<=0:
 			dead = true
 			area_attack.play("death")
+			ElevatorManager.emit_signal("enemy_die")
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
