@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://vypk02h4f47o"]
+[gd_scene load_steps=22 format=3 uid="uid://vypk02h4f47o"]
 
 [ext_resource type="Texture2D" uid="uid://cf3gs5c2efgps" path="res://sprites/Cyberpunk_Trader_Floor_Tileset.png" id="1_u0011"]
 [ext_resource type="Texture2D" uid="uid://d3h5ta8f228ix" path="res://sprites/Cyber_Info_Shop_Tiles.png" id="2_dbaoh"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dr0kua1y2xups" path="res://sprites/Cyber_Floor_Tileset_Blue_Grey.png" id="6_fp1pp"]
 [ext_resource type="PackedScene" uid="uid://dnyrkg7g8lswe" path="res://scripts/main_char.tscn" id="7_6vbyc"]
 [ext_resource type="PackedScene" uid="uid://q7pehfvsq4w4" path="res://ui/camera_2d.tscn" id="8_i1uqa"]
-[ext_resource type="Script" uid="uid://412n06ei3p7m" path="res://scripts/camera_2d.gd" id="9_vgrtm"]
 [ext_resource type="PackedScene" path="res://entitys/game_over_panel.tscn" id="10_caou8"]
 [ext_resource type="Script" uid="uid://c4i7r4m4vnhwi" path="res://scripts/ui.gd" id="11_wnhgt"]
 [ext_resource type="PackedScene" uid="uid://cjbbaf0x34xin" path="res://ui/Inventory.tscn" id="12_tb8rk"]
@@ -5888,14 +5887,13 @@ scale = Vector2(4, 4)
 
 [node name="Camera2D" parent="MainChar" instance=ExtResource("8_i1uqa")]
 position = Vector2(0, -47.759644)
-zoom = Vector2(1, 1)
+zoom = Vector2(0.715, 0.715)
 limit_enabled = false
 limit_left = -1600
 limit_top = -620
 limit_right = 1000
 limit_bottom = 360
 limit_smoothed = true
-script = ExtResource("9_vgrtm")
 
 [node name="GameOverPanel" parent="MainChar/Camera2D" instance=ExtResource("10_caou8")]
 visible = false

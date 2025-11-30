@@ -18,6 +18,7 @@ var facing := 1   # 1 = right, -1 = left
 
 var timer_to_attack = 0
 var activated_hitbox = false
+var dead_time = 0
 
 # --- УЗЛЫ ---
 @onready var anim_sprite: AnimatedSprite2D = $EnemySprite
@@ -49,6 +50,10 @@ func _ready():
 
 func _physics_process(delta):
 	if dead:
+		dead_time += delta
+		if dead_time > 3:
+			if self.is_in_group("boss"):
+				GlobalSignal.emit_signal("boss_defeat")
 		return
 	
 	timer_to_attack += delta

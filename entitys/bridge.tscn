@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://blfr5maxx74yf"]
+[gd_scene load_steps=19 format=3 uid="uid://blfr5maxx74yf"]
 
 [ext_resource type="Texture2D" uid="uid://s50bua7okct8" path="res://sprites/Ecopunk_Tiles_Seamless_64x64.png" id="1_8m5tg"]
 [ext_resource type="Script" uid="uid://cksx4f7860cl" path="res://entitys/bridge.gd" id="1_c7oy7"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cjbbaf0x34xin" path="res://ui/Inventory.tscn" id="8_mhomg"]
 [ext_resource type="PackedScene" uid="uid://c2dwton4ywud5" path="res://entitys/tab_guide.tscn" id="9_nrijv"]
 [ext_resource type="PackedScene" uid="uid://sff5dn44ussn" path="res://entitys/boss_enemy.tscn" id="10_ocgw2"]
+[ext_resource type="PackedScene" uid="uid://m28pyskvif3v" path="res://entitys/airship_enemy.tscn" id="12_uthrp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3qdu3"]
 texture = ExtResource("1_8m5tg")
@@ -3179,9 +3180,13 @@ offset_top = -556.0
 offset_right = -642.0
 offset_bottom = -556.0
 
-[node name="Enemy" parent="." instance=ExtResource("10_ocgw2")]
+[node name="Enemy" parent="." groups=["boss"] instance=ExtResource("10_ocgw2")]
 position = Vector2(1462, 92)
 scale = Vector2(1.6121114, 1.6121114)
+speed = null
+attack_distance = null
+attack_cooldown = null
+damage = null
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-1353, 1384)
@@ -3208,3 +3213,17 @@ position = Vector2(3721, -1403)
 rotation = -1.5707964
 scale = Vector2(20.7327, 20.7327)
 shape = SubResource("WorldBoundaryShape2D_ocgw2")
+
+[node name="Airship_Enemy" parent="." instance=ExtResource("12_uthrp")]
+position = Vector2(1099, 326)
+speed = null
+attack_distance = null
+attack_cooldown = null
+damage = null
+
+[node name="Airship_Enemy2" parent="." instance=ExtResource("12_uthrp")]
+position = Vector2(1000, -312)
+speed = null
+attack_distance = null
+attack_cooldown = null
+damage = null

@@ -64,7 +64,7 @@ texture = ExtResource("4_cl0ar")
 
 [node name="dialog" parent="." instance=ExtResource("4_f6gqj")]
 scale = Vector2(7.4800005, 7.4800005)
-path = "res://dialoges/first_dialog.json"
+path = "res://dialoges/barmen_dialog.json"
 
 [connection signal="body_entered" from="dialog" to="dialog" method="_on_body_entered"]
 [connection signal="body_exited" from="dialog" to="dialog" method="_on_body_exited"]

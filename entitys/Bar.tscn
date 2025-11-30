@@ -1,12 +1,12 @@
-[gd_scene load_steps=23 format=3 uid="uid://bnsdjsuy55763"]
+[gd_scene load_steps=24 format=3 uid="uid://bnsdjsuy55763"]
 
 [ext_resource type="Texture2D" uid="uid://vnxujoshtwt0" path="res://sprites/Neon_Nightclub_Pixel_Tileset.png" id="1_bxg78"]
 [ext_resource type="Texture2D" uid="uid://cf3gs5c2efgps" path="res://sprites/Cyberpunk_Trader_Floor_Tileset.png" id="2_vqh65"]
 [ext_resource type="Texture2D" uid="uid://d3h5ta8f228ix" path="res://sprites/Cyber_Info_Shop_Tiles.png" id="3_1hggo"]
 [ext_resource type="Texture2D" uid="uid://c2f5t1d7evnev" path="res://sprites/Industrial_Freight_Elevator_Tileset.png" id="4_wel1r"]
 [ext_resource type="Texture2D" uid="uid://ck8gimqybp51r" path="res://sprites/Neon_Underground_Tileset_64x64.png" id="5_tye0t"]
-[ext_resource type="AudioStream" uid="uid://i26wlogxmd8d" path="res://music/Embi2.mp3" id="6_vqh65"]
 [ext_resource type="PackedScene" uid="uid://dnyrkg7g8lswe" path="res://scripts/main_char.tscn" id="6_c3ee5"]
+[ext_resource type="AudioStream" uid="uid://i26wlogxmd8d" path="res://music/Embi2.mp3" id="6_vqh65"]
 [ext_resource type="PackedScene" uid="uid://q7pehfvsq4w4" path="res://ui/camera_2d.tscn" id="7_3i51k"]
 [ext_resource type="Script" uid="uid://412n06ei3p7m" path="res://scripts/camera_2d.gd" id="8_itttu"]
 [ext_resource type="PackedScene" path="res://entitys/game_over_panel.tscn" id="9_r45pb"]
@@ -5949,6 +5949,7 @@ offset_bottom = -553.0
 [node name="Barman2" parent="." instance=ExtResource("12_3i51k")]
 position = Vector2(-355, -974)
 scale = Vector2(3, 3)
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_vqh65")
 volume_db = -11.835
