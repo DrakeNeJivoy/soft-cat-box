@@ -32,6 +32,8 @@ func _process(delta: float) -> void:
 		#GameManager.add_unlock_element("Wind")
 		#GameManager.add_unlock_element("Light")
 		GlobalSignal.open_dialog.emit(dialog_text, parent)
+		AirShipHubManager.set_door_visible(true)
+		AirShipHubManager.emit_signal("update_door")
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -48,3 +50,7 @@ func _on_body_exited(body: Node2D) -> void:
 	else:
 		print("Неа")
 	
+
+
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	pass # Replace with function body.

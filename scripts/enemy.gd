@@ -18,6 +18,7 @@ var facing := 1   # 1 = right, -1 = left
 
 var timer_to_attack = 0
 var activated_hitbox = false
+var dead_time = 0
 
 # --- УЗЛЫ ---
 @onready var anim_sprite: AnimatedSprite2D = $EnemySprite
@@ -28,6 +29,7 @@ var activated_hitbox = false
 @onready var hitbox_left: Area2D = $HitBoxLeft
 @onready var hitbox_right_shape: CollisionShape2D = $HitBoxRight/HitBox_RightCollision
 @onready var hitbox_left_shape: CollisionShape2D = $HitBoxLeft/HitBox_LeftCollision
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 @onready var timer: Timer = $Timer
 
@@ -49,6 +51,11 @@ func _ready():
 
 func _physics_process(delta):
 	if dead:
+		dead_time += delta
+		collision_shape_2d.disabled = true
+		if dead_time > 3:
+			if self.is_in_group("boss"):
+				GlobalSignal.emit_signal("boss_defeat")
 		return
 	
 	timer_to_attack += delta
@@ -175,14 +182,14 @@ func _on_hitbox_body_entered(body):
 
 func activate_hitbox():
 	already_hit = false
-	hitbox_left.monitoring = true
-	hitbox_right.monitoring = true
-	#if facing == 1:
-		#hitbox_right_shape.disabled = false
-		#hitbox_left_shape.disabled = true
-	#else:
-		#hitbox_right_shape.disabled = true
-		#hitbox_left_shape.disabled = false
+	#hitbox_left.monitoring = true
+	#hitbox_right.monitoring = true
+	if facing == 1:
+		hitbox_left.monitoring = false
+		hitbox_right.monitoring = true
+	else:
+		hitbox_left.monitoring = true
+		hitbox_right.monitoring = false
 	
 func deactivate_hitbox():
 	#hitbox_right_shape.disabled = true
@@ -199,6 +206,7 @@ func _hitted(dmg, body):
 		if current_hp<=0:
 			dead = true
 			area_attack.play("death")
+			ElevatorManager.emit_signal("enemy_die")
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:

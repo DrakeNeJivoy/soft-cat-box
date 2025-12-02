@@ -7,6 +7,7 @@ signal take_dmg(amount: int)
 signal open_inventory
 signal hit(amount:int, body)
 signal tab_guide_open
+signal boss_defeat
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

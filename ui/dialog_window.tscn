@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b10h3gtc27kkn"]
+[gd_scene load_steps=9 format=3 uid="uid://b10h3gtc27kkn"]
 
 [ext_resource type="Texture2D" uid="uid://cxnai3f0wxvp" path="res://sprites/RAW_DIALOG.png" id="1_0n77a"]
 [ext_resource type="Script" uid="uid://b0bkibg043e3s" path="res://texture_rect.gd" id="2_monqi"]
 [ext_resource type="FontFile" uid="uid://r1iqx70molqn" path="res://sprites/Fonts/minecraft_0.ttf" id="3_monqi"]
+[ext_resource type="Texture2D" uid="uid://ck7c7aos7ym8e" path="res://sprites/MainHero.png" id="4_ej70u"]
+[ext_resource type="Texture2D" uid="uid://sip1o3wvqqc4" path="res://sprites/Barmen.png" id="5_q0we2"]
+[ext_resource type="Texture2D" uid="uid://vrhkfnapd7dt" path="res://sprites/Trader.png" id="6_mgvpp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ej70u"]
 font = ExtResource("3_monqi")
@@ -49,6 +52,46 @@ offset_right = 293.0
 offset_bottom = 70.0
 text = "Drake"
 label_settings = SubResource("LabelSettings_8jitt")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 114.0
+offset_top = 53.0
+offset_right = 154.0
+offset_bottom = 93.0
+
+[node name="Zak" type="TextureRect" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 5.0
+offset_top = 16.000002
+offset_right = 130.0
+offset_bottom = 141.0
+rotation = -0.2635447
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("4_ej70u")
+
+[node name="Barman" type="TextureRect" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 5.0
+offset_top = 16.000002
+offset_right = 130.0
+offset_bottom = 141.0
+rotation = -0.2635447
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("5_q0we2")
+
+[node name="Trader" type="TextureRect" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 5.0
+offset_top = 16.000002
+offset_right = 130.0
+offset_bottom = 141.0
+rotation = -0.2635447
+scale = Vector2(0.365, 0.365)
+texture = ExtResource("6_mgvpp")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="gui_input" from="TextureRect" to="TextureRect" method="_on_gui_input"]

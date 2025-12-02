@@ -20,3 +20,6 @@ func _event(parent):
 	if parent == self:
 		GameManager.add_unlock_element("Wind")
 		queue_free()
+		GameManager.inc_colbs()
+		if GameManager.get_colbs() >= 2:
+			get_tree().change_scene_to_file("res://entitys/bridge.tscn")

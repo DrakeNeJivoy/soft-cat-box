@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://b0gtqo6q0b432" path="res://sprites/Char/Combo_Attack_SW-Sheet.png" id="6_7k42t"]
 [ext_resource type="Texture2D" uid="uid://b8wyj8qwlx7sc" path="res://sprites/fireB.png" id="6_b2vdg"]
 [ext_resource type="Texture2D" uid="uid://ddxenwf8uatu5" path="res://sprites/Char/Свет/Basic_Attack_SE-Sheet.png" id="6_g1h64"]
-[ext_resource type="PackedScene" path="res://scripts/slash_area.tscn" id="6_h4bng"]
+[ext_resource type="PackedScene" uid="uid://bx3ep8r2vjb1e" path="res://scripts/slash_area.tscn" id="6_h4bng"]
 [ext_resource type="Texture2D" uid="uid://bwcl5f6u2x0jp" path="res://sprites/Char/Огонь/Basic_Attack_SW-Sheet.png" id="6_paq6d"]
 [ext_resource type="Texture2D" uid="uid://bbck521gjyibg" path="res://sprites/light.png" id="7_h4bng"]
 [ext_resource type="Texture2D" uid="uid://bjrj31yww0bir" path="res://sprites/Char/Ветер/Basic_Attack_SW-Sheet.png" id="7_nbg7s"]
@@ -2268,6 +2268,7 @@ scale = Vector2(1.3712009, 0.4964557)
 shape = SubResource("CapsuleShape2D_i1gkq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(130, 0)
 offset_left = 8.0
 offset_top = -58.0
