@@ -3183,10 +3183,6 @@ offset_bottom = -556.0
 [node name="Enemy" parent="." groups=["boss"] instance=ExtResource("10_ocgw2")]
 position = Vector2(1462, 92)
 scale = Vector2(1.6121114, 1.6121114)
-speed = null
-attack_distance = null
-attack_cooldown = null
-damage = null
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-1353, 1384)
@@ -3216,14 +3212,6 @@ shape = SubResource("WorldBoundaryShape2D_ocgw2")
 
 [node name="Airship_Enemy" parent="." instance=ExtResource("12_uthrp")]
 position = Vector2(1099, 326)
-speed = null
-attack_distance = null
-attack_cooldown = null
-damage = null
 
 [node name="Airship_Enemy2" parent="." instance=ExtResource("12_uthrp")]
 position = Vector2(1000, -312)
-speed = null
-attack_distance = null
-attack_cooldown = null
-damage = null

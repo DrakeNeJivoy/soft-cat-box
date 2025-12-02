@@ -29,6 +29,7 @@ var dead_time = 0
 @onready var hitbox_left: Area2D = $HitBoxLeft
 @onready var hitbox_right_shape: CollisionShape2D = $HitBoxRight/HitBox_RightCollision
 @onready var hitbox_left_shape: CollisionShape2D = $HitBoxLeft/HitBox_LeftCollision
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 @onready var timer: Timer = $Timer
 
@@ -51,6 +52,7 @@ func _ready():
 func _physics_process(delta):
 	if dead:
 		dead_time += delta
+		collision_shape_2d.disabled = true
 		if dead_time > 3:
 			if self.is_in_group("boss"):
 				GlobalSignal.emit_signal("boss_defeat")
@@ -180,14 +182,14 @@ func _on_hitbox_body_entered(body):
 
 func activate_hitbox():
 	already_hit = false
-	hitbox_left.monitoring = true
-	hitbox_right.monitoring = true
-	#if facing == 1:
-		#hitbox_right_shape.disabled = false
-		#hitbox_left_shape.disabled = true
-	#else:
-		#hitbox_right_shape.disabled = true
-		#hitbox_left_shape.disabled = false
+	#hitbox_left.monitoring = true
+	#hitbox_right.monitoring = true
+	if facing == 1:
+		hitbox_left.monitoring = false
+		hitbox_right.monitoring = true
+	else:
+		hitbox_left.monitoring = true
+		hitbox_right.monitoring = false
 	
 func deactivate_hitbox():
 	#hitbox_right_shape.disabled = true

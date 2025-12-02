@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://csjkeol54tn1a"]
+[gd_scene load_steps=28 format=3 uid="uid://sff5dn44ussn"]
 
 [ext_resource type="Script" uid="uid://by0r6bqc51rii" path="res://scripts/enemy.gd" id="1_qaasr"]
 [ext_resource type="Texture2D" uid="uid://dnsu8d1llqtul" path="res://sprites/KazakhsThanos/Fist_SW-Sheet.png" id="2_l3m3e"]
