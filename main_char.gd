@@ -44,7 +44,7 @@ func _ready() -> void:
 	GameManager.cng_ats.connect(_change_attack_speed)
 	GameManager.cng_perk.connect(_check_perks)
 	battle_area = GameManager.get_butttle_area()
-	$Slashes.scale.x = -1
+	#$Slashes.scale.x = -1
 	animated_sprite_2d.animation_finished.connect(_on_attack_animation_finished)
 	print("lol")
 	
@@ -135,7 +135,7 @@ func _physics_process(delta):
 			facing_direction = "left"
 			
 		if input_vector.x != 0:  # только если есть ввод по горизонтали
-				$Slashes.scale.x = -1 if facing_direction == "right" else 1
+				$Slashes.scale.x = 1 if facing_direction == "right" else -1
 				$Slashes.position.x = 10 if facing_direction == "right" else -10
 		if battle_area:
 			animated_sprite_2d.play("fight_run_" + facing_direction + postfix)
@@ -241,6 +241,7 @@ func _on_attack_animation_finished():
 				cast_slice()
 			animated_sprite_2d.play("second_attack_" + facing_direction + postfix)
 		else:
+			slash_nodes[0].visible = false
 			attack_stage = 0
 			animated_sprite_2d.play("cancel_animation_" + facing_direction + postfix)
 			#end_attack()

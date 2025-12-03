@@ -1,7 +1,8 @@
 extends Area2D
 
 @onready var collision: CollisionPolygon2D = get_node_or_null("CollisionShape2D") as CollisionPolygon2D
-@onready var sprite: Sprite2D = get_node_or_null("Sprite2D") as Sprite2D
+#@onready var sprite: Sprite2D = get_node_or_null("Sprite2D") as Sprite2D
+@onready var anim_sprite: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D") as AnimatedSprite2D
 @onready var main_char: CharacterBody2D = $"../.."
 
 var current_elements
@@ -24,8 +25,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not visible:
+		anim_sprite.stop()
 		monitoring = false
 	else:
+		anim_sprite.play("default")
 		monitoring = true
 
 func _change_params():

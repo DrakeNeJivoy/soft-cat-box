@@ -1,4 +1,4 @@
-[gd_scene load_steps=328 format=3 uid="uid://dnyrkg7g8lswe"]
+[gd_scene load_steps=338 format=3 uid="uid://dnyrkg7g8lswe"]
 
 [ext_resource type="Script" uid="uid://ce25s2wwe60j0" path="res://main_char.gd" id="1_fsbk6"]
 [ext_resource type="Texture2D" uid="uid://dwqtoevwavb86" path="res://sprites/Char/Basic_Attack_SW-Sheet.png" id="2_7t2p0"]
@@ -38,10 +38,8 @@
 [ext_resource type="Texture2D" uid="uid://c33jv63n2snww" path="res://sprites/Char/Огонь + свет/IDLE_SE_battle-Sheet.png" id="16_m2ydn"]
 [ext_resource type="Texture2D" uid="uid://bpatkqk1vk77l" path="res://sprites/Char/Огонь + ветер/IDLE_SE_battle-Sheet.png" id="17_m424v"]
 [ext_resource type="Texture2D" uid="uid://d0ts3aahlw3uq" path="res://sprites/Char/Свет/IDLE_SE_battle-Sheet.png" id="18_0ljf4"]
-[ext_resource type="Texture2D" uid="uid://b1gcf2qehi6jx" path="res://sprites/splash1.png" id="18_drl64"]
 [ext_resource type="Texture2D" uid="uid://cffn3spe7riy6" path="res://sprites/Char/Огонь/RUNNING_SW-Sheet.png" id="18_jehah"]
 [ext_resource type="Texture2D" uid="uid://bbmnl3a7g86ga" path="res://sprites/Char/Ветер/RUNNING_SW-Sheet.png" id="19_ceg3j"]
-[ext_resource type="Texture2D" uid="uid://ckum08txg4g7c" path="res://sprites/splash2.png" id="19_wrbv0"]
 [ext_resource type="Texture2D" uid="uid://dlh8sgu8yr763" path="res://sprites/Char/Свет + Ветер/IDLE_SE_battle-Sheet.png" id="22_jys70"]
 [ext_resource type="Texture2D" uid="uid://d1cwpjp3n3ceo" path="res://sprites/Char/Огонь + свет/IDLE_SW_battle-Sheet.png" id="22_vv4nn"]
 [ext_resource type="Texture2D" uid="uid://dhkteq37gyvjk" path="res://sprites/Char/Огонь/Combo_Attacck_SE-Sheet.png" id="23_15m7e"]
@@ -67,6 +65,8 @@
 [ext_resource type="Texture2D" uid="uid://bs67466sxk4xc" path="res://sprites/Char/Ветер/Combo_Attack_SW-Sheet.png" id="51_xvq3d"]
 [ext_resource type="Texture2D" uid="uid://dgsjok1hklkwd" path="res://sprites/Char/Свет + Ветер/Combo_Attack_SE-Sheet.png" id="52_of04i"]
 [ext_resource type="Texture2D" uid="uid://c8cckjiyxbw6m" path="res://sprites/Char/Свет + Ветер/Combo_Attack_SW-Sheet.png" id="59_4fjbh"]
+[ext_resource type="Texture2D" uid="uid://7tfjwgqh8ci" path="res://sprites/SPLASH_UPTODOWN.png" id="67_vv4nn"]
+[ext_resource type="Texture2D" uid="uid://t16q7d7e0h1t" path="res://sprites/splash2-Sheet.png" id="69_jys70"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e8ycq"]
 atlas = ExtResource("2_7w3uh")
@@ -2251,6 +2251,78 @@ animations = [{
 radius = 2.5479243
 height = 62.378887
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_03m27"]
+atlas = ExtResource("67_vv4nn")
+region = Rect2(87, 0, 29, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5aif0"]
+atlas = ExtResource("67_vv4nn")
+region = Rect2(58, 0, 29, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3d5l6"]
+atlas = ExtResource("67_vv4nn")
+region = Rect2(29, 0, 29, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psver"]
+atlas = ExtResource("67_vv4nn")
+region = Rect2(0, 0, 29, 91)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxv2q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03m27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5aif0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3d5l6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psver")
+}],
+"loop": false,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m8k6"]
+atlas = ExtResource("69_jys70")
+region = Rect2(0, 0, 29, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxv2q"]
+atlas = ExtResource("69_jys70")
+region = Rect2(29, 0, 29, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfkbr"]
+atlas = ExtResource("69_jys70")
+region = Rect2(58, 0, 29, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndpek"]
+atlas = ExtResource("69_jys70")
+region = Rect2(87, 0, 29, 91)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yosyl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6m8k6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxv2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfkbr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndpek")
+}],
+"loop": false,
+"name": &"default",
+"speed": 6.0
+}]
+
 [node name="MainChar" type="CharacterBody2D" groups=["player"]]
 z_index = 5
 script = ExtResource("1_fsbk6")
@@ -2259,8 +2331,10 @@ script = ExtResource("1_fsbk6")
 position = Vector2(1, -24.999998)
 scale = Vector2(0.4616512, 0.4616512)
 sprite_frames = SubResource("SpriteFrames_4sk1i")
-animation = &"second_attack_right_wind_light"
+animation = &"first_attack_right_light"
 autoplay = "fight_idle_right"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -22)
@@ -2296,34 +2370,32 @@ texture = ExtResource("8_iadgf")
 [node name="Slash1" parent="Slashes" instance=ExtResource("6_h4bng")]
 visible = false
 z_index = 1
-scale = Vector2(-1, 1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Slashes/Slash1"]
 position = Vector2(-17, -18)
-polygon = PackedVector2Array(29, -24, 30, 7, 4, 16, -6, 3, -5, -16, 14, -39)
+polygon = PackedVector2Array(35, -39, 42, -28, 44, -12, 42, 4, 33, 18, 16, 31, 7, 19, 18, -52)
 
-[node name="Sprite2D" type="Sprite2D" parent="Slashes/Slash1"]
-z_index = 1
-position = Vector2(-13.000002, -28)
-rotation = -3.0210302
-scale = Vector2(0.5566627, 0.608276)
-texture = ExtResource("18_drl64")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slashes/Slash1"]
+position = Vector2(13.75, -27.75)
+scale = Vector2(1.1551725, 0.9175824)
+sprite_frames = SubResource("SpriteFrames_uxv2q")
+frame = 3
+frame_progress = 1.0
 
 [node name="Slash2" parent="Slashes" instance=ExtResource("6_h4bng")]
 visible = false
 z_index = 1
-scale = Vector2(-1, 1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Slashes/Slash2"]
 position = Vector2(-17, -18)
-polygon = PackedVector2Array(28, -28, 30, -10, 27, 8, 25, 17, -3, 1, -3, -29, 1, -43, 8, -49, 14, -44)
+polygon = PackedVector2Array(35, -39, 42, -28, 44, -12, 42, 4, 33, 18, 16, 31, 7, 19, 18, -52)
 
-[node name="Sprite2D" type="Sprite2D" parent="Slashes/Slash2"]
-z_index = 1
-position = Vector2(-13, -41.6)
-rotation = -3.0210302
-scale = Vector2(0.5566627, 0.608276)
-texture = ExtResource("19_wrbv0")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slashes/Slash2"]
+position = Vector2(13.75, -27.75)
+scale = Vector2(1.1551725, 0.9175824)
+sprite_frames = SubResource("SpriteFrames_yosyl")
+frame = 3
+frame_progress = 1.0
 
 [connection signal="body_entered" from="Slashes/Slash1" to="Slashes/Slash1" method="_on_body_entered"]
 [connection signal="body_entered" from="Slashes/Slash2" to="Slashes/Slash2" method="_on_body_entered"]
